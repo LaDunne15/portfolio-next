@@ -2,17 +2,17 @@
 import dynamic from "next/dynamic";
 
 // Динамічний імпорт — вимикає SSR
-const PaperCanvas = dynamic(() => import("@/components/paperCanvas"), {
+const PaperCanvas2 = dynamic(() => import("@/components/paperCanvas2"), {
   ssr: false,
 });
 
-export default function HomePage() {
+export default function AboutPage() {
   return (
     <main style={{
-      background: "red"
+      background: "white"
     }}>
       <h1>Paper.js у Next.js</h1>
-      <PaperCanvas />
+      <PaperCanvas2 />
     </main>
   );
 }
