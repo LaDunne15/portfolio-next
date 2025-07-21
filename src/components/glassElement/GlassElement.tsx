@@ -5,6 +5,7 @@ import {
 } from "./getDisplacementFilter";
 import { getDisplacementMap } from "./getDisplacementMap";
 import styles from "./glassElements.module.css";
+import classNames from "classnames";
 
 type GlassElementProps = Omit<DisplacementOptions, "width" | "height"> & {
   width: number | string;
@@ -12,6 +13,7 @@ type GlassElementProps = Omit<DisplacementOptions, "width" | "height"> & {
   children?: ReactNode;
   blur?: number;
   debug?: boolean;
+  styleContainer?: string
 };
 
 export const GlassElement = ({
@@ -24,6 +26,7 @@ export const GlassElement = ({
   chromaticAberration,
   blur = 2,
   debug = false,
+  styleContainer = ""
 }: GlassElementProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const [measuredSize, setMeasuredSize] = useState({ width: 300, height: 300 });
@@ -70,7 +73,7 @@ export const GlassElement = ({
   return (
     <div
       ref={ref}
-      className={styles.box}
+      className={ classNames(styles.box, styleContainer) }
       style={style}
       onMouseDown={() => {}}
       onMouseUp={() => {}}

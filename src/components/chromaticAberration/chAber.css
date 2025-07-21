@@ -1,0 +1,12 @@
+.ch-aber-wrapper {
+  display: flex;
+}
+
+.ch-aber-content {
+  transition: filter 0.3s ease;
+}
+
+.ch-aber-wrapper.hover .ch-aber-content {
+  filter: url(#ch-aberration);
+  transition: 1s;
+}
