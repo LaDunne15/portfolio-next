@@ -1,16 +1,16 @@
-"use client";
-import React, { useId, useState } from "react";
-import "./chAber.css";
-import classNames from "classnames";
+'use client';
+import React, { useId, useState } from 'react';
+import './chAber.css';
+import classNames from 'classnames';
 
 type ChAberProps = {
   children: React.ReactNode;
   strength?: number; // сила ефекту
-  active?: boolean;  // true = завжди активний ефект
+  active?: boolean; // true = завжди активний ефект
   className?: string;
 };
 
-export const ChAber = ({ children, strength = 2, active = false, className="" }: ChAberProps) => {
+export const ChAber = ({ children, strength = 1, active = false, className = '' }: ChAberProps) => {
   const filterId = useId();
   const [hover, setHover] = useState(false);
 
@@ -45,7 +45,7 @@ export const ChAber = ({ children, strength = 2, active = false, className="" }:
       </svg>
 
       <div
-        className={ classNames("ch-aber-content", className) }
+        className={classNames('ch-aber-content', className)}
         style={applyFilter ? { filter: `url(#${filterId})` } : {}}
       >
         {children}

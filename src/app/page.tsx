@@ -1,18 +1,19 @@
-"use client";
-import dynamic from "next/dynamic";
+'use client';
+import dynamic from 'next/dynamic';
 
 // Динамічний імпорт — вимикає SSR
-const PaperCanvas = dynamic(() => import("@/components/paperCanvas"), {
+const PaperCanvas = dynamic(() => import('@/components/paperCanvas'), {
   ssr: false,
 });
 
 export default function HomePage() {
   return (
-    <main style={{
-      background: "red"
-    }}>
-      <h1>Paper.js у Next.js</h1>
-      <PaperCanvas />
+    <main
+      style={{
+        background: 'red',
+      }}
+    >
+      {/* <PaperCanvas /> */}
     </main>
   );
 }

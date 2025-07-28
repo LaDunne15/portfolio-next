@@ -1,13 +1,8 @@
-"use client";
-import { useParams } from "next/navigation";
+'use client';
+import { useParams } from 'next/navigation';
 
 export default function Project() {
-
   const { slug } = useParams();
 
-  return (
-    <div>
-      Project page - slug: { slug }
-    </div>
-  );
+  return <div>Project page - slug: {slug}</div>;
 }
