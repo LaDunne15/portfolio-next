@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useEffect, useRef } from "react";
-import paper from "paper";
+import { useEffect, useRef } from 'react';
+import paper from 'paper';
 
 export default function PaperCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -12,10 +12,18 @@ export default function PaperCanvas() {
     paper.setup(canvasRef.current);
 
     const ballPositions = [
-      [255, 129], [610, 73], [486, 363],
-      [117, 459], [484, 726], [843, 306],
-      [789, 615], [1049, 82], [1292, 428],
-      [1117, 733], [1352, 86], [92, 798],
+      [255, 129],
+      [610, 73],
+      [486, 363],
+      [117, 459],
+      [484, 726],
+      [843, 306],
+      [789, 615],
+      [1049, 82],
+      [1292, 428],
+      [1117, 733],
+      [1352, 86],
+      [92, 798],
     ];
 
     const handle_len_rate = 2.4;
@@ -26,7 +34,7 @@ export default function PaperCanvas() {
       const circle = new paper.Path.Circle({
         center: new paper.Point(pos),
         radius,
-        fillColor: 'black'
+        fillColor: 'black',
       });
       circlePaths.push(circle);
     }
@@ -34,7 +42,7 @@ export default function PaperCanvas() {
     const largeCircle = new paper.Path.Circle({
       center: new paper.Point(676, 433),
       radius: 100,
-      fillColor: 'black'
+      fillColor: 'black',
     });
     circlePaths.push(largeCircle);
 
@@ -47,7 +55,13 @@ export default function PaperCanvas() {
       });
     }
 
-    function metaball(ball1: paper.Path.Circle, ball2: paper.Path.Circle, v: number, handle_len_rate: number, maxDistance: number) {
+    function metaball(
+      ball1: paper.Path.Circle,
+      ball2: paper.Path.Circle,
+      v: number,
+      handle_len_rate: number,
+      maxDistance: number
+    ) {
       const center1 = ball1.position;
       const center2 = ball2.position;
       const radius1 = ball1.bounds.width / 2;
@@ -124,7 +138,7 @@ export default function PaperCanvas() {
       ref={canvasRef}
       width={1440}
       height={900}
-      style={{ display: "block", background: "white" }}
+      style={{ display: 'block', background: 'white' }}
     />
   );
 }
