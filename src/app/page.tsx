@@ -11,8 +11,7 @@ export default function HomePage() {
     <main style={{
       background: "red"
     }}>
-      <h1>Paper.js у Next.js</h1>
-      <PaperCanvas />
+      {/* <PaperCanvas /> */}
     </main>
   );
 }
