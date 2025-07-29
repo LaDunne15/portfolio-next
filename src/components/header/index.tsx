@@ -5,9 +5,10 @@ import { GlassElement } from '../glassElement/GlassElement';
 import { Contact2, Home, Palette } from 'lucide-react';
 import { ChAber } from '../chromaticAberration';
 
-import s from '@/styles/Main.module.scss';
 import dynamic from 'next/dynamic';
 import { Intro } from './_components/intro';
+
+import s from '@/styles/Header.module.scss';
 
 const PaperCanvas2 = dynamic(() => import('@/components/paperCanvas2'), {
   ssr: false,

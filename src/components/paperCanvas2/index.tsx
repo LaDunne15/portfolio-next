@@ -2,6 +2,7 @@
 
 import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import paper, { Point, Raster, Path, PointText } from 'paper';
+import { palette } from '@/constants/color';
 
 interface Props {
   children?: ReactNode;
@@ -25,12 +26,8 @@ export default function SpiralRaster({ children }: Props) {
 
     paper.setup(canvasRef.current);
 
-    // Спочатку створюємо растер за id 'mona' — в Next.js немає картинки за id, тому
-    // можна поставити дефолтне зображення, наприклад, локальний шлях або замінити на заглушку
-
-    // Для прикладу додамо дефолтне зображення, можна замінити на будь-яке, наприклад public/mona.jpg
     const img = new Image();
-    img.src = '/main.jpg'; // Поклади зображення в /public/mona.jpg
+    img.src = '/main.jpg';
     img.onload = () => {
       rasterRef.current = new Raster(img);
       rasterRef.current.visible = false;
@@ -56,7 +53,6 @@ export default function SpiralRaster({ children }: Props) {
       }
     };
 
-    // Обробник resize
     const onResize = () => {
       if (rasterRef.current?.loaded) {
         resetSpiral();
@@ -99,8 +95,8 @@ export default function SpiralRaster({ children }: Props) {
     pathRef.current?.insert(0, positionRef.current!.add(vector).add(rot));
     positionRef.current = positionRef.current!.add(vector);
 
-    if (pathRef.current) pathRef.current.strokeColor = new paper.Color('#0c6113ff');
-    if (pathRef.current) pathRef.current.fillColor = new paper.Color('#0c6113ff');
+    if (pathRef.current) pathRef.current.strokeColor = new paper.Color(palette.dark);
+    if (pathRef.current) pathRef.current.fillColor = new paper.Color(palette.dark);
   }
 
   function resetSpiral() {
