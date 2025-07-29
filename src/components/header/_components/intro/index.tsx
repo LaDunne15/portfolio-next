@@ -3,17 +3,11 @@ import Github from '@/assets/svg/github.svg';
 import { ChAber } from '@/components/chromaticAberration';
 import Link from 'next/link';
 
+import s from '@/styles/Header.module.scss';
+
 export const Intro = () => {
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        height: '100%',
-        justifyContent: 'center',
-      }}
-    >
+    <div className={s.intro}>
       <span style={{ fontSize: 32 }}>Welcome. My name is</span>
       <ChAber strength={1} active>
         <span style={{ fontSize: 100, lineHeight: '100px', color: 'white' }}>Vlad</span>

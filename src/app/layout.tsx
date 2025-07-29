@@ -3,6 +3,8 @@ import { Footer } from '@/components/footer';
 import Header from '@/components/header';
 import localFont from 'next/font/local';
 
+import '@/styles/global.module.scss';
+
 // const nunitoMedium = localFont({
 //   src: "../assets/fonts/nunito/Nunito-Medium.ttf",
 // })
