@@ -1,19 +1,13 @@
 'use client';
-import dynamic from 'next/dynamic';
-
-// Динамічний імпорт — вимикає SSR
-const PaperCanvas = dynamic(() => import('@/components/paperCanvas'), {
-  ssr: false,
-});
+import { About } from '@/components/about';
+import { RecentProjects } from '@/components/recentProjects';
+import s from '@/styles/Home.module.scss';
 
 export default function HomePage() {
   return (
-    <main
-      style={{
-        background: 'red',
-      }}
-    >
-      {/* <PaperCanvas /> */}
+    <main className={s.home}>
+      <About />
+      <RecentProjects />
     </main>
   );
 }
