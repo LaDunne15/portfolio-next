@@ -1,4 +1,4 @@
-import { CSSProperties, ReactNode, useState, useEffect, useRef } from 'react';
+import { CSSProperties, ReactNode, useState, useEffect, useRef, useMemo } from 'react';
 import { getDisplacementFilter, DisplacementOptions } from './getDisplacementFilter';
 import { getDisplacementMap } from './getDisplacementMap';
 import styles from './glassElements.module.css';
@@ -34,6 +34,8 @@ export const GlassElement = ({
     const observer = new ResizeObserver(([entry]) => {
       const { width, height } = entry.contentRect;
       setMeasuredSize({ width, height });
+
+      console.log({ width, height });
     });
 
     observer.observe(ref.current);
@@ -43,18 +45,22 @@ export const GlassElement = ({
 
   const depth = baseDepth;
 
-  const style: CSSProperties = {
-    height: typeof height === 'number' ? `${height}px` : height,
-    width: typeof width === 'number' ? `${width}px` : width,
-    borderRadius: `${radius}px`,
-    backdropFilter: `blur(${blur / 2}px) url('${getDisplacementFilter({
+  const filterUrl = useMemo(() => {
+    return getDisplacementFilter({
       height: measuredSize.height,
       width: measuredSize.width,
       radius,
       depth,
       strength,
       chromaticAberration,
-    })}') blur(${blur}px) brightness(1.1) saturate(1.5)`,
+    });
+  }, [measuredSize, radius, depth, strength, chromaticAberration]);
+
+  const style: CSSProperties = {
+    height: typeof height === 'number' ? `${height}px` : height,
+    width: typeof width === 'number' ? `${width}px` : width,
+    borderRadius: `${radius}px`,
+    backdropFilter: `blur(${blur / 2}px) url('${filterUrl}') blur(${blur}px) brightness(1.1) saturate(1.5)`,
   };
 
   if (debug) {

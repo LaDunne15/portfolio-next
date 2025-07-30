@@ -1,0 +1,27 @@
+.recentProjects {
+  padding: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+
+  h2 {
+    flex: 1;
+  }
+
+  &_seeAll {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 10px;
+}
+
+.projectCard {
+}
