@@ -28,6 +28,8 @@ const projectsData: Project[] = [
     gitHub: 'https://github.com/LaDunne15/quizaida',
     imgs: [Q3, Q4, Q5, Q1, Q2],
     description: 'Website for quiz tests',
+    palette: [],
+    mainColor: '#90c748',
   },
   {
     id: 2,
@@ -39,6 +41,8 @@ const projectsData: Project[] = [
     gitHub: 'https://github.com/LaDunne15/film-check',
     imgs: [FC1, FC2, FC3, FC4],
     description: 'Information about films, serials and actors',
+    palette: [],
+    mainColor: '#ffff00',
   },
   {
     id: 1,
@@ -50,6 +54,8 @@ const projectsData: Project[] = [
     gitHub: 'https://github.com/LaDunne15/weather-forecast',
     imgs: [P1, P2],
     description: 'Weather report website',
+    palette: [],
+    mainColor: '#741661',
   },
   /*
     {

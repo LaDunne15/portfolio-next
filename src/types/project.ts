@@ -12,4 +12,6 @@ export type Project = {
   gitHub: string;
   imgs: StaticImageData[];
   description: string;
+  palette: string[];
+  mainColor: string;
 };

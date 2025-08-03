@@ -27,7 +27,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${oswaldMedium.className}`}>
         <Header />
-        {children}
+        <div className="content">{children}</div>
         <Footer />
       </body>
     </html>

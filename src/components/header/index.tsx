@@ -33,7 +33,14 @@ export const Header = () => {
             padding: 10,
           }}
         >
-          <GlassElement width="auto" height="auto" radius={10} depth={1} styleContainer={s.header}>
+          <GlassElement
+            width="auto"
+            height="auto"
+            radius={10}
+            depth={1}
+            chromaticAberration={5}
+            styleContainer={s.header}
+          >
             <Link href="/" className="link">
               <ChAber active={pathname === '/'} className={s.element}>
                 <Home color="#FFF" />
