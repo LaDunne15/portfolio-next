@@ -6,7 +6,7 @@ export const About = () => {
   return (
     <GlassElement width="100%" height="100%" radius={30} depth={1}>
       <div className={s.home_about}>
-        <h2>About</h2>
+        <span className={s.home_about_title}>About</span>
         <p>
           Hi there! I'm Rahul, a third-year Computer Science student at SRM Institute with a passion
           for crafting user-centric experiences. I specialize in UI/UX design, front-end
@@ -15,7 +15,11 @@ export const About = () => {
           methodologies. Beyond coding, I enjoy photography, graphic design, and exploring music.
           Let's connect and bring your digital visions to life
         </p>
-        <Link href="/about">More...</Link>
+        <div className={s.home_about_more}>
+          <Link href="/about" className="link">
+            <div className={s.home_about_more_button}>More...</div>
+          </Link>
+        </div>
       </div>
     </GlassElement>
   );

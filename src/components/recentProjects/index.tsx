@@ -12,10 +12,12 @@ export const RecentProjects = () => {
     <section>
       <GlassElement width="100%" height="100%" radius={30} depth={1}>
         <div className={sP.recentProjects}>
-          <h2>Recent Projects</h2>
-          <Link href="/projects" className={s.recentProjects_seeAll}>
-            <span>See all</span>
-            <ArrowRight />
+          <span className={sP.recentProjects_title}>Recent Projects</span>
+          <Link href="/projects" className="link">
+            <div className={sP.recentProjects_seeAll}>
+              <span>See all</span>
+              <ArrowRight />
+            </div>
           </Link>
         </div>
       </GlassElement>

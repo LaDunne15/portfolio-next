@@ -10,6 +10,7 @@ export type Project = {
   devDirection: string;
   stack: TechItemName[];
   gitHub: string;
+  mainImage: StaticImageData;
   imgs: StaticImageData[];
   description: string;
   palette: string[];
