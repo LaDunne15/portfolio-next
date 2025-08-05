@@ -10,6 +10,8 @@ import Instagram from '@/assets/svg/instagram.svg';
 import Link from 'next/link';
 
 import s from '@/styles/About.module.scss';
+import { TECH_ITEM_NAMES } from '@/types/project';
+import { TechItem } from '@/components/techItem';
 
 export default function AboutPage() {
   return (
@@ -103,7 +105,11 @@ export default function AboutPage() {
           <GlassElement width="100%" height="100%" radius={30} depth={0} chromaticAberration={5}>
             <div style={{ padding: '30px' }}>
               <span style={{ fontSize: 25 }}>Skills</span>
-              <div></div>
+              <div style={{ display: 'flex', flexDirection: 'row', gap: '15px' }}>
+                {TECH_ITEM_NAMES.map((i) => (
+                  <TechItem name={i} size={30} />
+                ))}
+              </div>
             </div>
           </GlassElement>
         </div>

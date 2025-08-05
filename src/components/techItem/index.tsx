@@ -4,6 +4,8 @@ import Mongo from '@/assets/svg/mongo.svg';
 import NextJS from '@/assets/svg/nextjs.svg';
 import { TechItemName } from '@/types/project';
 
+import { Tooltip } from 'react-tooltip';
+
 interface Props {
   name: TechItemName;
   size?: number;
@@ -23,20 +25,28 @@ export const TechItem = ({ name, size = 50, bgColor = '#000' }: Props) => {
         return <Mongo style={styleIcon} />;
       case 'Next.js':
         return <NextJS style={styleIcon} />;
+      default:
+        return <></>;
     }
   };
 
   return (
-    <div
-      style={{
-        width: `${size}px`,
-        height: `${size}px`,
-        background: bgColor,
-        borderRadius: '5px',
-        padding: '5px',
-      }}
-    >
-      {getIcon(name)}
-    </div>
+    <>
+      <div
+        style={{
+          width: `${size}px`,
+          height: `${size}px`,
+          background: bgColor,
+          borderRadius: '5px',
+          padding: '5px',
+        }}
+        data-tooltip-id={name}
+        data-tooltip-content={name}
+      >
+        {getIcon(name)}
+      </div>
+
+      <Tooltip id={name} variant="dark" />
+    </>
   );
 };

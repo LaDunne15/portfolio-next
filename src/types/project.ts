@@ -1,6 +1,8 @@
 import { StaticImageData } from 'next/image';
 
-export type TechItemName = 'React' | 'Redux' | 'MongoDB' | 'Next.js';
+export const TECH_ITEM_NAMES = ['React', 'Redux', 'MongoDB', 'Next.js'] as const;
+
+export type TechItemName = (typeof TECH_ITEM_NAMES)[number];
 
 export type Project = {
   id: number;
