@@ -19,7 +19,7 @@ export default function AboutPage() {
       <GlassElement width="100%" height="100%" radius={30} depth={0} chromaticAberration={5}>
         <div style={{ padding: 30 }}>
           <span style={{ textAlign: 'center', display: 'block', height: 'auto', fontSize: '30px' }}>
-            About
+            ABOUT
           </span>
         </div>
       </GlassElement>

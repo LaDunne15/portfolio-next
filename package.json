@@ -10,6 +10,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.2.1",
     "@specy/liquid-glass-react": "^1.0.2",
     "classnames": "^2.5.1",
     "liquid-glass-react": "^1.1.1",
@@ -18,7 +19,9 @@
     "paper": "^0.12.18",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-tooltip": "^5.29.1"
+    "react-hook-form": "^7.62.0",
+    "react-tooltip": "^5.29.1",
+    "zod": "^4.0.14"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
