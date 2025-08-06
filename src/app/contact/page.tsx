@@ -38,10 +38,10 @@ export default function Contact() {
         </div>
       </GlassElement>
       <GlassElement width="100%" height="100%" radius={30} depth={0} chromaticAberration={5}>
-        <div style={{ display: 'flex', flexDirection: 'row', padding: '30px' }}>
+        <div style={{ display: 'flex', flexDirection: 'row', padding: '30px', gap: '10px' }}>
           <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-            <span>Get in Touch</span>
-            <span>
+            <span style={{ fontSize: '25px' }}>Get in Touch</span>
+            <span style={{ fontSize: '20px', maxWidth: '60%' }}>
               If you are interested in my work or want to provide feedback about this website, I am
               open to exchanging ideas .
             </span>
@@ -56,9 +56,11 @@ export default function Contact() {
               }}
             >
               <TextInput control={control} name="name" label="Name" />
-              <TextInput control={control} name="name" label="Email" />
-              <TextInput control={control} name="message" label="Message" />
-              <button type="submit">Send</button>
+              <TextInput control={control} name="email" label="Email" />
+              <TextInput control={control} name="message" label="Message" multiline />
+              <button className="button" type="submit">
+                Send
+              </button>
             </form>
           </div>
         </div>

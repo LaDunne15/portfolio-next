@@ -6,6 +6,17 @@ body {
   margin: 0;
 }
 
+@font-face {
+  font-family: 'OswaldMedium';
+  src: url('../assets/fonts/oswald/Oswald-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+button {
+  font-family: 'OswaldMedium', sans-serif;
+}
+
 .content {
   flex: 1;
   display: flex;
@@ -31,4 +42,13 @@ body {
   }
 
   display: flex;
+}
+
+.button {
+  background: black;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  color: white;
 }

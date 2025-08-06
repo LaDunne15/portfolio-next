@@ -107,7 +107,7 @@ export default function AboutPage() {
               <span style={{ fontSize: 25 }}>Skills</span>
               <div style={{ display: 'flex', flexDirection: 'row', gap: '15px' }}>
                 {TECH_ITEM_NAMES.map((i) => (
-                  <TechItem name={i} size={30} />
+                  <TechItem key={i} name={i} size={30} />
                 ))}
               </div>
             </div>
