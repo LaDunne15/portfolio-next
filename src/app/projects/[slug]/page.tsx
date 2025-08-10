@@ -1,8 +1,96 @@
 'use client';
+import { GlassElement } from '@/components/glassElement/GlassElement';
+import { TechItem } from '@/components/techItem';
+import getProjectBySlug from '@/helpers/projects/getProjectBySlug';
+import Image from 'next/image';
 import { useParams } from 'next/navigation';
+import { features } from 'process';
 
 export default function Project() {
-  const { slug } = useParams();
+  const { slug } = useParams<{ slug: string }>();
 
-  return <div>Project page - slug: {slug}</div>;
+  const project = getProjectBySlug(slug);
+
+  if (!project) return null;
+
+  return (
+    <main>
+      <GlassElement width="100%" height="100%" radius={30} depth={0} chromaticAberration={5}>
+        <div style={{ padding: '30px' }}>
+          <div style={{ display: 'flex', flexDirection: 'row', gap: '15px' }}>
+            <div
+              style={{
+                flex: 1,
+                maxWidth: '50%',
+                maxHeight: '80vh',
+              }}
+            >
+              <Image
+                src={project.mainImage}
+                alt=""
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'contain',
+                }}
+              />
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <div
+                style={{
+                  flex: 1,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '10px',
+                }}
+              >
+                <span style={{ fontSize: '30px' }}>{project.title}</span>
+                <span>{project.devDirection}</span>
+                <span>{project.description}</span>
+                <div>
+                  <span>Tech Stack</span>
+                  <div
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'row',
+                      gap: '10px',
+                    }}
+                  >
+                    {project.stack.map((i) => (
+                      <TechItem name={i} key={i} size={40} />
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  gap: '10px',
+                }}
+              >
+                <button className="button">Demo</button>
+                <button className="button">Github</button>
+              </div>
+            </div>
+          </div>
+          {project.mainFeatures && (
+            <div style={{ paddingTop: '30px' }}>
+              <span style={{ fontSize: '30px' }}>Main Features</span>
+              <ul>
+                {project.mainFeatures.map((i) => (
+                  <li key={i.name} style={{ textDecoration: 'none' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                      <span style={{ fontSize: '20px' }}>{i.name}</span>
+                      <span>{i.description}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      </GlassElement>
+    </main>
+  );
 }

@@ -23,6 +23,7 @@ import { Project } from '@/types/project';
 const projectsData: Project[] = [
   {
     id: 3,
+    slug: 'quizaida',
     title: 'Quizaida',
     icon: iconQ,
     url: 'https://quizaida.vercel.app',
@@ -34,9 +35,16 @@ const projectsData: Project[] = [
     description: 'Website for quiz tests',
     palette: [],
     mainColor: '#90c748',
+    mainFeatures: [
+      {
+        name: 'main feature',
+        description: '123',
+      },
+    ],
   },
   {
     id: 2,
+    slug: 'film-check',
     title: 'FilmCHECK',
     icon: iconFC,
     url: 'https://film-check.onrender.com/',
@@ -51,6 +59,7 @@ const projectsData: Project[] = [
   },
   {
     id: 1,
+    slug: 'yak-tam-vnuzy-pogodka',
     title: 'Як там внизу погодка?',
     icon: iconP,
     url: 'https://pogodka.pp.ua',
