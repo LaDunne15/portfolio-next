@@ -24,10 +24,17 @@ const TextInput = <T extends Record<string, any>>({
           {multiline ? (
             <textarea
               className={s.inputMultiline}
-              onChange={onChange}
+              onChange={(e) => {
+                // оновлюємо значення для react-hook-form
+                onChange(e);
+                // авто-висота
+                e.target.style.height = 'auto'; // скидаємо висоту перед виміром
+                e.target.style.height = e.target.scrollHeight + 'px';
+              }}
               onBlur={onBlur}
               value={value}
               id="description"
+              style={{ overflow: 'hidden' }} // прибираємо скрол
             />
           ) : (
             <div style={{ display: 'flex', flexDirection: 'column', position: 'relative' }}>

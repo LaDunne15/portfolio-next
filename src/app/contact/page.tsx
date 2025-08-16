@@ -1,22 +1,27 @@
 'use client';
 import { GlassElement } from '@/components/glassElement/GlassElement';
-import { Controller, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
 import TextInput from '@/components/UIKit/input';
+import dynamic from 'next/dynamic';
 
-const schema = z.object({
-  name: z.string().min(1, 'Required'),
-  email: z.string().min(1, 'Required'),
-  message: z.string().min(1, 'Required'),
-});
+import { useRef, useState } from 'react';
+import { EMAIL_OWNER_TO } from '@/constants/env';
+import { sendEmail } from '@/services/email.service';
+import { SendMail, sendMailSchema } from '@/types/schemas/sendMail.schema';
 
-type SendMail = z.infer<typeof schema>;
+import Picker from '@emoji-mart/react';
+import emojiData from '@emoji-mart/data';
+
+const ReactSketchCanvas = dynamic(
+  () => import('react-sketch-canvas').then((mod) => mod.ReactSketchCanvas),
+  { ssr: false }
+);
 
 export default function Contact() {
-  const { control, handleSubmit } = useForm({
+  const { control, handleSubmit, setValue, watch } = useForm({
     mode: 'onBlur',
-    resolver: zodResolver(schema),
+    resolver: zodResolver(sendMailSchema),
     defaultValues: {
       name: '',
       email: '',
@@ -24,8 +29,30 @@ export default function Contact() {
     },
   });
 
-  const submit = (data: SendMail) => {
-    console.log(data);
+  const [showEmoji, setShowEmoji] = useState(false);
+
+  const canvasRef = useRef<any>(null);
+
+  const messageValue = watch('message');
+
+  const addEmoji = (emoji: any) => {
+    setValue('message', messageValue + emoji.native); // додаємо обране емодзі
+  };
+
+  const submit = async (data2: SendMail) => {
+    const base64Image = await canvasRef.current?.exportImage('png');
+    if (!base64Image) return alert('Please draw something first!');
+
+    const templateParams = {
+      to: EMAIL_OWNER_TO,
+      title: 'Contact Form',
+      name: data2.name,
+      time: new Date().toLocaleString(),
+      message: data2.message,
+      image: base64Image,
+    };
+
+    sendEmail(templateParams);
   };
 
   return (
@@ -58,6 +85,21 @@ export default function Contact() {
               <TextInput control={control} name="name" label="Name" />
               <TextInput control={control} name="email" label="Email" />
               <TextInput control={control} name="message" label="Message" multiline />
+
+              <button type="button" onClick={() => setShowEmoji((prev) => !prev)}>
+                {showEmoji ? 'Close Emoji Picker' : 'Insert Emoji'}
+              </button>
+
+              {showEmoji && <Picker data={emojiData} onEmojiSelect={addEmoji} />}
+              <div>
+                <label>🌿 Leave a trace</label>
+                <ReactSketchCanvas
+                  ref={canvasRef}
+                  style={{ overflow: 'hidden', aspectRatio: 2 / 1, cursor: 'crosshair' }}
+                  strokeWidth={4}
+                  strokeColor="black"
+                />
+              </div>
               <button className="button" type="submit">
                 Send
               </button>
