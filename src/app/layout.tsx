@@ -4,6 +4,7 @@ import Header from '@/components/header';
 import localFont from 'next/font/local';
 
 import '@/styles/global.module.scss';
+import { PhotoModalProvider } from '@/providers/PhotoModalProvider';
 
 // const nunitoMedium = localFont({
 //   src: "../assets/fonts/nunito/Nunito-Medium.ttf",
@@ -26,9 +27,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${oswaldMedium.className}`}>
-        <Header />
-        <div className="content">{children}</div>
-        <Footer />
+        <PhotoModalProvider>
+          <Header />
+          <div className="content">{children}</div>
+          <Footer />
+        </PhotoModalProvider>
       </body>
     </html>
   );

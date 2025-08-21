@@ -1,0 +1,12 @@
+.projectContainer {
+    display: flex; 
+    flex-direction: column;
+    gap: 10px;
+    // box-shadow: inset 0px 0px 110px -50px var(--main-color);
+}
+
+.back {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+}

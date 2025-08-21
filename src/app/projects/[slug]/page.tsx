@@ -2,25 +2,29 @@
 import { GlassElement } from '@/components/glassElement/GlassElement';
 import { TechItem } from '@/components/techItem';
 import getProjectBySlug from '@/helpers/projects/getProjectBySlug';
+import { usePhotoModal } from '@/providers/PhotoModalProvider';
 import { ArrowLeft } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import { features } from 'process';
+
+import s from '@/styles/Project.module.scss';
 
 export default function Project() {
   const { slug } = useParams<{ slug: string }>();
 
   const project = getProjectBySlug(slug);
 
+  const { open } = usePhotoModal();
+
   if (!project) return null;
 
   return (
-    <main style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+    <main className={s.projectContainer}>
       <Link href="/projects" className="link">
         <div>
           <GlassElement width="100%" height="100%" radius={20} depth={0}>
-            <div style={{ padding: '10px', display: 'flex', flexDirection: 'row' }}>
+            <div className={s.back}>
               <ArrowLeft />
               <span>Back</span>
             </div>
@@ -36,6 +40,7 @@ export default function Project() {
                 maxWidth: '50%',
                 maxHeight: '80vh',
               }}
+              onClick={() => open([project.mainImage], 0, project.mainColor)}
             >
               <Image
                 src={project.mainImage}
@@ -127,10 +132,11 @@ export default function Project() {
             <div style={{ paddingTop: '30px' }}>
               <span style={{ fontSize: '30px' }}>Gallery</span>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px' }}>
-                {project.imgs.map((i) => (
+                {project.imgs.map((i, index) => (
                   <div
                     key={i.src}
                     style={{ display: 'flex', flexDirection: 'column', aspectRatio: 1 }}
+                    onClick={() => open(project.imgs, index, project.mainColor)}
                   >
                     <Image
                       src={i}
