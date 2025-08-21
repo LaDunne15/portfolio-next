@@ -1,7 +1,7 @@
 'use client';
 import { GlassElement } from '@/components/glassElement/GlassElement';
 import { ProjectCard } from '@/components/projectCard';
-import projectsData from '@/helpers/projects/projects';
+import { getProjects } from '@/helpers/projects/projects';
 import Link from 'next/link';
 
 import s from '@/styles/Projects.module.scss';
@@ -17,7 +17,7 @@ export default function Projects() {
         </div>
       </GlassElement>
       <div className={s.projectsGrid}>
-        {projectsData.map((i) => (
+        {getProjects('ua').map((i) => (
           <ProjectCard project={i} key={i.id} />
         ))}
       </div>

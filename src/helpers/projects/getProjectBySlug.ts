@@ -1,8 +1,8 @@
 import { Project } from '@/types/project';
-import projectsData from './projects';
+import { getProjects } from './projects';
 
 const getProjectBySlug = (slug: string): Project | undefined => {
-  return projectsData.find((i) => i.slug === slug);
+  return getProjects('ua').find((i) => i.slug === slug);
 };
 
 export default getProjectBySlug;

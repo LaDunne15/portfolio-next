@@ -2,9 +2,8 @@ import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { GlassElement } from '../glassElement/GlassElement';
 
-import s from '@/styles/Home.module.scss';
 import sP from '@/styles/Projects.module.scss';
-import projectsData from '@/helpers/projects/projects';
+import { getProjects, projectsData } from '@/helpers/projects/projects';
 import { ProjectCard } from '../projectCard';
 
 export const RecentProjects = () => {
@@ -22,9 +21,11 @@ export const RecentProjects = () => {
         </div>
       </GlassElement>
       <div className={sP.projectsGrid}>
-        {projectsData.slice(0, 3).map((i) => (
-          <ProjectCard project={i} key={i.id} />
-        ))}
+        {getProjects('ua')
+          .slice(0, 3)
+          .map((i) => (
+            <ProjectCard project={i} key={i.id} />
+          ))}
       </div>
     </section>
   );

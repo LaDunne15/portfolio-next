@@ -25,7 +25,7 @@ export const ProjectCard = ({ project: i }: Props) => {
           <div className={s.projectCard_info}>
             <span className={s.projectCard_info_title}>{i.title}</span>
             <span className={s.projectCard_info_devDirection}>{i.devDirection}</span>
-            <span className={s.projectCard_info_description}>{i.description}</span>
+            <span className={s.projectCard_info_description}>{i.shortDescription}</span>
             <div style={{ display: 'flex', gap: '10px', marginTop: 10 }}>
               {i.stack.map((j) => (
                 <TechItem name={j} key={`${i.id}${j}`} size={30} />

@@ -18,13 +18,13 @@ import FC4 from '@/helpers/projects/images/filmCheck/images/titleMobile.png';
 import P from '@/helpers/projects/images/pogodka/main.png';
 import P1 from '@/helpers/projects/images/pogodka/images/Desktop.jpg';
 import P2 from '@/helpers/projects/images/pogodka/images//Mobile.jpg';
-import { Project } from '@/types/project';
+import { Project, ProjectRaw } from '@/types/project';
 
-const projectsData: Project[] = [
+const projectsData: ProjectRaw[] = [
   {
     id: 3,
     slug: 'quizaida',
-    title: 'Quizaida',
+    title: { en: 'Quizaida', ua: 'Квізайда' },
     icon: iconQ,
     url: 'https://quizaida.vercel.app',
     devDirection: 'Fullstack',
@@ -32,20 +32,30 @@ const projectsData: Project[] = [
     gitHub: 'https://github.com/LaDunne15/quizaida',
     mainImage: Q,
     imgs: [Q3, Q4, Q5, Q1, Q2],
-    description: 'Website for quiz tests',
+    shortDescription: {
+      en: 'Website for quiz tests',
+      ua: 'Сайт для проходження вікторин',
+    },
+    description: {
+      en: 'Website for quiz tests',
+      ua: 'Вебсайт для тестів-вікторин',
+    },
     palette: [],
     mainColor: '#90c748',
     mainFeatures: [
       {
-        name: 'main feature',
-        description: '123',
+        name: { en: 'Email sending', ua: 'Надсилання email' },
+        description: {
+          en: 'Using real users email for registration & update password',
+          ua: 'Використання email користувачів для реєстрації та відновлення паролю',
+        },
       },
     ],
   },
   {
     id: 2,
     slug: 'film-check',
-    title: 'FilmCHECK',
+    title: { en: 'FilmCHECK', ua: 'ФільмЧЕК' },
     icon: iconFC,
     url: 'https://film-check.onrender.com/',
     devDirection: 'Frontend',
@@ -53,14 +63,33 @@ const projectsData: Project[] = [
     gitHub: 'https://github.com/LaDunne15/film-check',
     mainImage: FC,
     imgs: [FC1, FC2, FC3, FC4],
-    description: 'Information about films, serials and actors',
+    shortDescription: {
+      en: 'Information about films, serials and actors',
+      ua: 'Інформація про фільми, серіали та акторів',
+    },
+    description: {
+      en: 'Information about films, serials and actors',
+      ua: 'Вебсайт з інформацією про фільми, серіали та акторів',
+    },
     palette: [],
     mainColor: '#ffff00',
+    mainFeatures: [
+      {
+        name: { en: 'API', ua: 'API' },
+        description: {
+          en: 'Working with API',
+          ua: 'Робота з API',
+        },
+      },
+      {
+        name: { en: 'SCSS', ua: 'SCSS' },
+      },
+    ],
   },
   {
     id: 1,
     slug: 'yak-tam-vnuzy-pogodka',
-    title: 'Як там внизу погодка?',
+    title: { en: 'How’s the weather down there?', ua: 'Як там внизу погодка?' },
     icon: iconP,
     url: 'https://pogodka.pp.ua',
     devDirection: 'Frontend',
@@ -68,22 +97,50 @@ const projectsData: Project[] = [
     gitHub: 'https://github.com/LaDunne15/weather-forecast',
     mainImage: P,
     imgs: [P1, P2],
-    description: 'Weather report website',
+    shortDescription: {
+      en: 'Weather report website',
+      ua: 'Сайт з прогнозом погоди',
+    },
+    description: {
+      en: 'Weather report website',
+      ua: 'Вебсайт для перегляду прогнозу погоди',
+    },
     palette: [],
     mainColor: '#741661',
+    mainFeatures: [
+      {
+        name: { en: 'API', ua: 'API' },
+        description: {
+          en: 'Working with API',
+          ua: 'Робота з API',
+        },
+      },
+      {
+        name: { en: 'User location', ua: 'Локація користувача' },
+        description: {
+          en: 'Using user location for working API',
+          ua: 'Використання геолокації користувача для роботи з API',
+        },
+      },
+    ],
   },
-  /*
-    {
-        title: "Брусницький ЗЗСО І-ІІІ ступенів",
-        url: "https://brusnitsa-school-landing.onrender.com",
-        stack: [
-            "HTML5","CSS3","JS"
-        ],
-        gitHub: "https://github.com/LaDunne15/school-landing",
-        imgs: [
-        ],
-        description: "School site concept redesign"
-    }*/
 ];
 
-export default projectsData;
+const getProjects = (lang: 'en' | 'ua'): Project[] => {
+  return projectsData.map((project) => ({
+    ...project,
+    title: project.title[lang],
+    shortDescription: project.shortDescription[lang],
+    description: project.description[lang],
+    mainFeatures: project.mainFeatures
+      ? [
+          ...project.mainFeatures.map((f) => ({
+            name: f.name[lang],
+            description: f.description ? f.description[lang] : undefined,
+          })),
+        ]
+      : [],
+  }));
+};
+
+export { projectsData, getProjects };
