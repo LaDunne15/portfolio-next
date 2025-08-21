@@ -10,8 +10,8 @@ import { EMAIL_OWNER_TO } from '@/constants/env';
 import { sendEmail } from '@/services/email.service';
 import { SendMail, sendMailSchema } from '@/types/schemas/sendMail.schema';
 
-import Picker from '@emoji-mart/react';
-import emojiData from '@emoji-mart/data';
+// import Picker from '@emoji-mart';
+// import emojiData from '@emoji-mart/data';
 
 const ReactSketchCanvas = dynamic(
   () => import('react-sketch-canvas').then((mod) => mod.ReactSketchCanvas),
@@ -90,7 +90,7 @@ export default function Contact() {
                 {showEmoji ? 'Close Emoji Picker' : 'Insert Emoji'}
               </button>
 
-              {showEmoji && <Picker data={emojiData} onEmojiSelect={addEmoji} />}
+              {/* {showEmoji && <Picker data={emojiData} onEmojiSelect={addEmoji} />} */}
               <div>
                 <label>🌿 Leave a trace</label>
                 <ReactSketchCanvas
