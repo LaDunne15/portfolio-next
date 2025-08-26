@@ -7,7 +7,7 @@ export const sendEmail = async (templateParams: {
   name: string;
   time: string;
   message: string;
-  image: any;
+  image: string;
 }) => {
   try {
     await emailjs.send(EMAIL_JS_SERVICE_ID, EMAIL_JS_TEMPLATE_ID, templateParams, {

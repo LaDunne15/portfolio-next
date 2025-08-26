@@ -2,7 +2,6 @@
 import { GlassElement } from '@/components/glassElement/GlassElement';
 import { ProjectCard } from '@/components/projectCard';
 import { getProjects } from '@/helpers/projects/projects';
-import Link from 'next/link';
 
 import s from '@/styles/Projects.module.scss';
 

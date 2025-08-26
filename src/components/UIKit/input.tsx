@@ -1,14 +1,13 @@
-import { Control, Controller, FieldValues, UseControllerProps } from 'react-hook-form';
+import { Controller, FieldValues, UseControllerProps } from 'react-hook-form';
 
 import s from '@/styles/UIKit.module.scss';
 
 interface Props<T extends FieldValues> extends UseControllerProps<T> {
-  control: Control<T>;
   label?: string;
   multiline?: boolean;
 }
 
-const TextInput = <T extends Record<string, any>>({
+const TextInput = <T extends FieldValues>({
   name,
   control,
   label,

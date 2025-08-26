@@ -5,27 +5,27 @@ import { GlassElement } from '../glassElement/GlassElement';
 import { Contact2, Home, Palette } from 'lucide-react';
 import { ChAber } from '../chromaticAberration';
 
-import dynamic from 'next/dynamic';
-import { Intro } from './_components/intro';
+// import dynamic from 'next/dynamic';
+// import { Intro } from './_components/intro';
 
 import s from '@/styles/Header.module.scss';
 
-const PaperCanvas2 = dynamic(() => import('@/components/paperCanvas2'), {
-  ssr: false,
-});
+// const PaperCanvas2 = dynamic(() => import('@/components/paperCanvas2'), {
+//   ssr: false,
+// });
 
 export const Header = () => {
   const pathname = usePathname();
 
   return (
     <>
-      {pathname === '/' && (
+      {/* {pathname === '/' && (
         <div style={{ position: 'sticky' }}>
           <PaperCanvas2>
             <Intro />
           </PaperCanvas2>
         </div>
-      )}
+      )} */}
       <div style={{ width: '100%', textAlign: 'center', position: 'sticky', top: 0, zIndex: 10 }}>
         <div
           style={{

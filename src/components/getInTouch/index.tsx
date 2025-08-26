@@ -7,6 +7,7 @@ import Instagram from '@/assets/svg/instagram.svg';
 
 import s from '@/styles/Home.module.scss';
 import { Send } from 'lucide-react';
+import Image from 'next/image';
 
 export const GetInTouch = () => {
   return (
@@ -24,13 +25,13 @@ export const GetInTouch = () => {
             <span className={s.getInTouch_followMe_title}>Follow me on</span>
             <div className={s.getInTouch_followMe_links}>
               <Link href="/" className="link">
-                <GitHub className={s.linkIcon} />
+                <Image src={GitHub} alt="github" className={s.linkIcon} />
               </Link>
               <Link href="/" className="link">
-                <LinkedIn className={s.linkIcon} />
+                <Image src={LinkedIn} alt="linkedin" className={s.linkIcon} />
               </Link>
               <Link href="/" className="link">
-                <Instagram className={s.linkIcon} />
+                <Image src={Instagram} alt="instagram" className={s.linkIcon} />
               </Link>
             </div>
           </div>

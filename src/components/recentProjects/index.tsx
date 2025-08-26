@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { GlassElement } from '../glassElement/GlassElement';
 
 import sP from '@/styles/Projects.module.scss';
-import { getProjects, projectsData } from '@/helpers/projects/projects';
+import { getProjects } from '@/helpers/projects/projects';
 import { ProjectCard } from '../projectCard';
 
 export const RecentProjects = () => {

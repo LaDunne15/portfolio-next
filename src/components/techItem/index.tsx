@@ -1,7 +1,8 @@
-import React from '@/assets/svg/react.svg';
-import Redux from '@/assets/svg/redux.svg';
-import Mongo from '@/assets/svg/mongo.svg';
-import NextJS from '@/assets/svg/nextjs.svg';
+import Image from 'next/image';
+import ReactLogo from '@/assets/svg/react.svg';
+import ReduxLogo from '@/assets/svg/redux.svg';
+import MongoLogo from '@/assets/svg/mongo.svg';
+import NextJSLogo from '@/assets/svg/nextjs.svg';
 import { TechItemName } from '@/types/project';
 
 import { Tooltip } from 'react-tooltip';
@@ -12,23 +13,16 @@ interface Props {
   bgColor?: string;
 }
 
-export const TechItem = ({ name, size = 50, bgColor = '#000' }: Props) => {
-  const styleIcon = { width: `${size}px`, height: `${size}px`, color: '#FFF' };
+// Мапа для іконок
+const icons: Record<TechItemName, string> = {
+  React: ReactLogo,
+  Redux: ReduxLogo,
+  MongoDB: MongoLogo,
+  'Next.js': NextJSLogo,
+};
 
-  const getIcon = (name: TechItemName) => {
-    switch (name) {
-      case 'React':
-        return <React style={styleIcon} />;
-      case 'Redux':
-        return <Redux style={styleIcon} />;
-      case 'MongoDB':
-        return <Mongo style={styleIcon} />;
-      case 'Next.js':
-        return <NextJS style={styleIcon} />;
-      default:
-        return <></>;
-    }
-  };
+export const TechItem = ({ name, size = 50, bgColor = '#000' }: Props) => {
+  const icon = icons[name];
 
   return (
     <>
@@ -36,14 +30,17 @@ export const TechItem = ({ name, size = 50, bgColor = '#000' }: Props) => {
         style={{
           width: `${size}px`,
           height: `${size}px`,
-          background: bgColor,
+          backgroundColor: bgColor,
           borderRadius: '5px',
           padding: '5px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
         }}
         data-tooltip-id={name}
         data-tooltip-content={name}
       >
-        {getIcon(name)}
+        {icon ? <Image src={icon} alt={name} width={size} height={size} /> : null}
       </div>
 
       <Tooltip id={name} variant="dark" />

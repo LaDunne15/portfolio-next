@@ -4,6 +4,8 @@ import Header from '@/components/header';
 import localFont from 'next/font/local';
 
 import '@/styles/global.module.scss';
+import '@/styles/global.css';
+
 import { PhotoModalProvider } from '@/providers/PhotoModalProvider';
 
 // const nunitoMedium = localFont({
