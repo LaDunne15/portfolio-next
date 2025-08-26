@@ -1,8 +1,8 @@
 import { Project } from '@/types/project';
 import { getProjects } from './projects';
 
-const getProjectBySlug = (slug: string): Project | undefined => {
-  return getProjects('ua').find((i) => i.slug === slug);
+const getProjectBySlug = (slug: string, lang: 'en' | 'ua'): Project | undefined => {
+  return getProjects(lang).find((i) => i.slug === slug);
 };
 
 export default getProjectBySlug;

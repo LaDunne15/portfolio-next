@@ -34,6 +34,14 @@
     "Leave a trace": "Leave a trace",
     "Send": "Send"
   },
+  "project": {
+    "Back": "Back",
+    "Tech Stack": "Tech Stack",
+    "Demo": "Demo",
+    "GitHub": "GitHub",
+    "Main Features": "Main Features",
+    "Gallery": "Gallery"
+  },
   "footer": {
     "Credo": "Small steps today lead to a great journey tomorrow",
     "Portfolio": "Portfolio v3.0 © {year} Osh"

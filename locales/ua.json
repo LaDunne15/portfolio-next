@@ -34,6 +34,14 @@
     "Leave a trace": "Залиште мітку",
     "Send": "Надіслати"
   },
+  "project": {
+    "Back": "Назад",
+    "Tech Stack": "Стек технологій",
+    "Demo": "Демо",
+    "GitHub": "GitHub",
+    "Main Features": "Основні особливості",
+    "Gallery": "Галерея"
+  },
   "footer": {
     "Credo": "Прості кроки сьогодні, ведуть до великого походу завтра",
     "Portfolio": "Портфоліо v3.0 © {year} Osh"

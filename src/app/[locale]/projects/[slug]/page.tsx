@@ -9,11 +9,16 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 
 import s from '@/styles/Project.module.scss';
+import { useLocale } from 'next-intl';
+import { useTranslations } from 'use-intl';
 
 export default function Project() {
   const { slug } = useParams<{ slug: string }>();
 
-  const project = getProjectBySlug(slug);
+  const t = useTranslations('project');
+  const lang = useLocale();
+
+  const project = getProjectBySlug(slug, lang as 'ua' | 'en');
 
   const { open } = usePhotoModal();
 
@@ -26,7 +31,7 @@ export default function Project() {
           <GlassElement width="100%" height="100%" radius={20} depth={0}>
             <div className={s.back}>
               <ArrowLeft />
-              <span>Back</span>
+              <span>{t('Back')}</span>
             </div>
           </GlassElement>
         </div>
@@ -65,7 +70,7 @@ export default function Project() {
                 <span>{project.devDirection}</span>
                 <span>{project.description}</span>
                 <div>
-                  <span>Tech Stack</span>
+                  <span>{t('Tech Stack')}</span>
                   <div
                     style={{
                       display: 'flex',
@@ -95,7 +100,7 @@ export default function Project() {
                       borderRadius: '10px',
                     }}
                   >
-                    Demo
+                    {t('Demo')}
                   </div>
                 </Link>
                 <Link href="/" className="link">
@@ -107,7 +112,7 @@ export default function Project() {
                       borderRadius: '10px',
                     }}
                   >
-                    Github
+                    {t('GitHub')}
                   </div>
                 </Link>
               </div>
@@ -115,7 +120,7 @@ export default function Project() {
           </div>
           {project.mainFeatures && (
             <div style={{ paddingTop: '30px' }}>
-              <span style={{ fontSize: '30px' }}>Main Features</span>
+              <span style={{ fontSize: '30px' }}>{t('Main Features')}</span>
               <ul>
                 {project.mainFeatures.map((i) => (
                   <li key={i.name} style={{ textDecoration: 'none' }}>
@@ -130,7 +135,7 @@ export default function Project() {
           )}
           {project.imgs && (
             <div style={{ paddingTop: '30px' }}>
-              <span style={{ fontSize: '30px' }}>Gallery</span>
+              <span style={{ fontSize: '30px' }}>{t('Gallery')}</span>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px' }}>
                 {project.imgs.map((i, index) => (
                   <div
