@@ -14,12 +14,15 @@ import { SendMail, sendMailSchema } from '@/types/schemas/sendMail.schema';
 // import emojiData from '@emoji-mart/data';
 
 import type { ReactSketchCanvasRef } from 'react-sketch-canvas';
+import { useTranslations } from 'next-intl';
 const ReactSketchCanvas = dynamic(
   () => import('react-sketch-canvas').then((mod) => mod.ReactSketchCanvas),
   { ssr: false }
 );
 
 export default function Contact() {
+  const t = useTranslations('contact');
+
   const { control, handleSubmit /*setValue, watch*/ } = useForm({
     mode: 'onBlur',
     resolver: zodResolver(sendMailSchema),
@@ -61,18 +64,15 @@ export default function Contact() {
       <GlassElement width="100%" height="100%" radius={30} depth={0} chromaticAberration={5}>
         <div style={{ padding: 30 }}>
           <span style={{ textAlign: 'center', display: 'block', height: 'auto', fontSize: '30px' }}>
-            CONTACT
+            {t('CONTACT')}
           </span>
         </div>
       </GlassElement>
       <GlassElement width="100%" height="100%" radius={30} depth={0} chromaticAberration={5}>
         <div style={{ display: 'flex', flexDirection: 'row', padding: '30px', gap: '10px' }}>
           <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-            <span style={{ fontSize: '25px' }}>Get in Touch</span>
-            <span style={{ fontSize: '20px', maxWidth: '60%' }}>
-              If you are interested in my work or want to provide feedback about this website, I am
-              open to exchanging ideas .
-            </span>
+            <span style={{ fontSize: '25px' }}>{t('Get in touch')}</span>
+            <span style={{ fontSize: '20px', maxWidth: '60%' }}>{t('Get in touch text')}</span>
           </div>
           <div style={{ flex: 1 }}>
             <form
@@ -83,9 +83,9 @@ export default function Contact() {
                 gap: '10px',
               }}
             >
-              <TextInput control={control} name="name" label="Name" />
-              <TextInput control={control} name="email" label="Email" />
-              <TextInput control={control} name="message" label="Message" multiline />
+              <TextInput control={control} name="name" label={t('Name')} />
+              <TextInput control={control} name="email" label={t('Email')} />
+              <TextInput control={control} name="message" label={t('Message')} multiline />
 
               <button type="button" onClick={() => setShowEmoji((prev) => !prev)}>
                 {showEmoji ? 'Close Emoji Picker' : 'Insert Emoji'}
@@ -93,7 +93,7 @@ export default function Contact() {
 
               {/* {showEmoji && <Picker data={emojiData} onEmojiSelect={addEmoji} />} */}
               <div>
-                <label>🌿 Leave a trace</label>
+                <label>🌿 {t('Leave a trace')}</label>
                 <ReactSketchCanvas
                   ref={canvasRef}
                   style={{ overflow: 'hidden', aspectRatio: 2 / 1, cursor: 'crosshair' }}
@@ -102,7 +102,7 @@ export default function Contact() {
                 />
               </div>
               <button className="button" type="submit">
-                Send
+                {t('Send')}
               </button>
             </form>
           </div>

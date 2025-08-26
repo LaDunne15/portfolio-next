@@ -8,21 +8,21 @@ import Instagram from '@/assets/svg/instagram.svg';
 import s from '@/styles/Home.module.scss';
 import { Send } from 'lucide-react';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
 export const GetInTouch = () => {
+  const t = useTranslations('main');
+
   return (
     <GlassElement width="100%" height="100%" radius={30} depth={0} chromaticAberration={5}>
       <div className={s.getInTouch}>
         <div className={s.getInTouch_main}>
-          <span className={s.getInTouch_title}>Get in Touch</span>
-          <span className={s.getInTouch_text}>
-            If you are interested in my work or want to provide feedback about this website, I am
-            open to exchanging ideas .
-          </span>
+          <span className={s.getInTouch_title}>{t('Get in touch')}</span>
+          <span className={s.getInTouch_text}>{t('Get in touch text')}</span>
         </div>
         <div className={s.getInTouch_actions}>
           <div className={s.getInTouch_followMe}>
-            <span className={s.getInTouch_followMe_title}>Follow me on</span>
+            <span className={s.getInTouch_followMe_title}>{t('Follow me on')}</span>
             <div className={s.getInTouch_followMe_links}>
               <Link href="/" className="link">
                 <Image src={GitHub} alt="github" className={s.linkIcon} />
@@ -38,7 +38,7 @@ export const GetInTouch = () => {
           <div className={s.contactMe}>
             <Link href="/contact" className="link">
               <div className={s.contactMe_content}>
-                <span>Contact Me</span>
+                <span>{t('Contact me')}</span>
                 <Send />
               </div>
             </Link>

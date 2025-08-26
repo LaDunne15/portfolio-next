@@ -10,29 +10,40 @@ export default function LanguageSwitcher() {
 
   const segments = pathname.split('/').filter(Boolean);
 
-  // Визначаємо поточну мову
+  // Поточна мова
   const currentLocale = segments[0] === 'ua' ? 'ua' : 'en';
 
-  // Мова, на яку перемикаємося
-  const newLocale = currentLocale === 'ua' ? 'en' : 'ua';
+  // Функція для генерації нового шляху під вибрану мову
+  const getPathForLocale = (locale: 'ua' | 'en') => {
+    if (segments.length > 0) {
+      return '/' + [locale, ...segments.slice(currentLocale === 'ua' ? 1 : 0)].join('/');
+    }
+    return '/' + locale;
+  };
 
-  // Новий шлях: замінюємо перший сегмент мовою або додаємо, якщо дефолтна
-  const newPathSegments =
-    segments.length > 0
-      ? [newLocale, ...segments.slice(currentLocale === 'ua' ? 1 : 0)]
-      : [newLocale];
-
-  const newPath = '/' + newPathSegments.join('/');
-
-  const handleSwitch = () => {
+  const handleSwitch = (locale: 'ua' | 'en') => {
+    const newPath = getPathForLocale(locale);
     startTransition(() => {
       router.push(newPath);
     });
   };
 
   return (
-    <button onClick={handleSwitch} disabled={isPending}>
-      {newLocale.toUpperCase()}
-    </button>
+    <div style={{ display: 'flex', gap: '8px' }}>
+      {(['ua', 'en'] as const).map((locale) => (
+        <button
+          key={locale}
+          onClick={() => handleSwitch(locale)}
+          disabled={isPending || currentLocale === locale}
+          style={{
+            fontWeight: currentLocale === locale ? 'bold' : 'normal',
+            textDecoration: currentLocale === locale ? 'underline' : 'none',
+            opacity: isPending && currentLocale !== locale ? 0.6 : 1,
+          }}
+        >
+          {locale.toUpperCase()}
+        </button>
+      ))}
+    </div>
   );
 }

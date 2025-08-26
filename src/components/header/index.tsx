@@ -10,12 +10,14 @@ import { ChAber } from '../chromaticAberration';
 
 import s from '@/styles/Header.module.scss';
 import LanguageSwitcher from '../langSwitcher';
+import { useTranslations } from 'next-intl';
 
 // const PaperCanvas2 = dynamic(() => import('@/components/paperCanvas2'), {
 //   ssr: false,
 // });
 
 export const Header = () => {
+  const t = useTranslations('header');
   const pathname = usePathname();
 
   return (
@@ -45,25 +47,25 @@ export const Header = () => {
             <Link href="/" className="link">
               <ChAber active={pathname === '/'} className={s.element}>
                 <Home color="#FFF" />
-                <span>HOME</span>
+                <span>{t('HOME')}</span>
               </ChAber>
             </Link>
             <Link href="/about" className="link">
               <ChAber active={pathname === '/about'} className={s.element}>
                 <Contact2 color="#FFF" />
-                ABOUT
+                {t('ABOUT')}
               </ChAber>
             </Link>
             <Link href="/projects" className="link">
               <ChAber active={pathname === '/projects'} className={s.element}>
                 <Palette color="#FFF" />
-                PROJECTS
+                {t('PROJECTS')}
               </ChAber>
             </Link>
             <Link href="/contact" className="link">
               <ChAber active={pathname === '/contact'} className={s.element}>
                 <Contact2 color="#FFF" />
-                CONTACT
+                {t('CONTACT')}
               </ChAber>
             </Link>
             <LanguageSwitcher />

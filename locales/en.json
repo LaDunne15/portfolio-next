@@ -1,5 +1,41 @@
 {
+  "header": {
+    "HOME": "HOME",
+    "ABOUT": "ABOUT",
+    "PROJECTS": "PROJECTS",
+    "CONTACT": "CONTACT"
+  },
   "main": {
-    "Hello": "Hello"
+    "Hello": "Hello",
+    "About": "About",
+    "More": "More...",
+    "Recent projects": "Recent projects",
+    "See all": "See all",
+    "Get in touch": "Get in touch",
+    "Get in touch text": "If you are interested in my work or want to provide feedback about this website, I am open to exchanging ideas .",
+    "Follow me on": "Follow me on",
+    "Contact me": "Contact me"
+  },
+  "about": {
+    "ABOUT": "ABOUT",
+    "Download CV": "Download CV",
+    "Skills": "Skills"
+  },
+  "projects": {
+    "PROJECTS": "PROJECTS"
+  },
+  "contact": {
+    "CONTACT": "CONTACT",
+    "Get in touch": "Get in touch",
+    "Get in touch text": "If you are interested in my work or want to provide feedback about this website, I am open to exchanging ideas .",
+    "Name": "Name",
+    "Email": "Email",
+    "Message": "Message",
+    "Leave a trace": "Leave a trace",
+    "Send": "Send"
+  },
+  "footer": {
+    "Credo": "Small steps today lead to a great journey tomorrow",
+    "Portfolio": "Portfolio v3.0 © {year} Osh"
   }
 }

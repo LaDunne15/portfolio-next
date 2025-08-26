@@ -14,14 +14,17 @@ import { TECH_ITEM_NAMES } from '@/types/project';
 import { TechItem } from '@/components/techItem';
 
 import mainImage from '../../../../public/main.jpg';
+import { useTranslations } from 'next-intl';
 
 export default function AboutPage() {
+  const t = useTranslations('about');
+
   return (
     <main style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
       <GlassElement width="100%" height="100%" radius={30} depth={0} chromaticAberration={5}>
         <div style={{ padding: 30 }}>
           <span style={{ textAlign: 'center', display: 'block', height: 'auto', fontSize: '30px' }}>
-            ABOUT
+            {t('ABOUT')}
           </span>
         </div>
       </GlassElement>
@@ -79,7 +82,7 @@ export default function AboutPage() {
                 }}
               >
                 <File />
-                <span>Download Resume</span>
+                <span>{t('Download CV')}</span>
               </button>
             </div>
           </div>
@@ -89,7 +92,7 @@ export default function AboutPage() {
         <div style={{ flex: 1 }}>
           <GlassElement width="100%" height="100%" radius={30} depth={0} chromaticAberration={5}>
             <div style={{ padding: '30px' }}>
-              <span style={{ fontSize: 25 }}>Skills</span>
+              <span style={{ fontSize: 25 }}>{t('Skills')}</span>
               <div style={{ display: 'flex', flexDirection: 'row', gap: '15px' }}>
                 {TECH_ITEM_NAMES.map((i) => (
                   <TechItem key={i} name={i} size={30} />
