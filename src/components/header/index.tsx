@@ -9,6 +9,7 @@ import { ChAber } from '../chromaticAberration';
 // import { Intro } from './_components/intro';
 
 import s from '@/styles/Header.module.scss';
+import LanguageSwitcher from '../langSwitcher';
 
 // const PaperCanvas2 = dynamic(() => import('@/components/paperCanvas2'), {
 //   ssr: false,
@@ -65,6 +66,7 @@ export const Header = () => {
                 CONTACT
               </ChAber>
             </Link>
+            <LanguageSwitcher />
           </GlassElement>
         </div>
       </div>

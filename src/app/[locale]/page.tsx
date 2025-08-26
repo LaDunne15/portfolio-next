@@ -1,4 +1,5 @@
 'use client';
+import '@/styles/global.css';
 import { About } from '@/components/about';
 import { GetInTouch } from '@/components/getInTouch';
 import { RecentProjects } from '@/components/recentProjects';

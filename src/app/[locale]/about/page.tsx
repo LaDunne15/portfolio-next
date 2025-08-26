@@ -13,7 +13,7 @@ import s from '@/styles/About.module.scss';
 import { TECH_ITEM_NAMES } from '@/types/project';
 import { TechItem } from '@/components/techItem';
 
-import mainImage from '../../../public/main.jpg';
+import mainImage from '../../../../public/main.jpg';
 
 export default function AboutPage() {
   return (

@@ -1,5 +1,6 @@
 // next.config.ts
 import { NextConfig } from 'next';
+import createNextIntlPlugin from 'next-intl/plugin';
 import path from 'path';
 
 /** @type {import('next').NextConfig} */
@@ -11,4 +12,5 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+const withNextIntl = createNextIntlPlugin();
+export default withNextIntl(nextConfig);
