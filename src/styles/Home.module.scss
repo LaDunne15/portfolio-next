@@ -30,6 +30,10 @@
       display: flex;
       justify-content: flex-end;
 
+      @media (max-width: 768px) {
+        justify-content: center;
+      }
+
       &_button {
         background-color: black;
         color: #fff;

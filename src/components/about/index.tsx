@@ -11,7 +11,7 @@ export const About = () => {
   return (
     <GlassElement width="100%" height="100%" radius={radius} depth={1}>
       <div className={s.home_about}>
-        <span className={s.home_about_title}>{t('About')}</span>
+        <h2 className="center">{t('About')}</h2>
         <p>Bla Bla Bla {t('Hello')}</p>
         <div className={s.home_about_more}>
           <Link href="/about" className="link">
