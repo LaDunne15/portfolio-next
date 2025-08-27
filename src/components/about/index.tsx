@@ -2,12 +2,14 @@ import Link from 'next/link';
 import { GlassElement } from '../glassElement/GlassElement';
 import s from '@/styles/Home.module.scss';
 import { useTranslations } from 'next-intl';
+import { useBreakpointValue } from '@/hooks/useBreakpointValue';
 
 export const About = () => {
   const t = useTranslations('main');
+  const radius = useBreakpointValue({ base: 10, md: 20, lg: 40 });
 
   return (
-    <GlassElement width="100%" height="100%" radius={30} depth={1}>
+    <GlassElement width="100%" height="100%" radius={radius} depth={1}>
       <div className={s.home_about}>
         <span className={s.home_about_title}>{t('About')}</span>
         <p>Bla Bla Bla {t('Hello')}</p>

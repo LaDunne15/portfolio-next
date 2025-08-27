@@ -8,6 +8,7 @@ import localFont from 'next/font/local';
 
 import '@/styles/global.css';
 import '@/styles/global.module.scss';
+import { BreakpointProvider } from '@/providers/BreakpointProvider';
 
 const oswaldMedium = localFont({
   src: '../../assets/fonts/oswald/Oswald-Medium.ttf',
@@ -39,9 +40,11 @@ export default async function RootLayout({ children, params }: Props) {
       <body className={oswaldMedium.className}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <PhotoModalProvider>
-            <Header />
-            <div className="content">{children}</div>
-            <Footer />
+            <BreakpointProvider>
+              <Header />
+              <div className="content">{children}</div>
+              <Footer />
+            </BreakpointProvider>
           </PhotoModalProvider>
         </NextIntlClientProvider>
       </body>
