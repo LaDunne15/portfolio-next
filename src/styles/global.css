@@ -25,6 +25,13 @@ button {
   margin: 0;
 }
 
+@media (max-width: 768px) {
+  .content {
+    padding: 0 10px 50px 10px;
+  }
+  
+}
+
 .link {
   all: unset;
   cursor: pointer;

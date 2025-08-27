@@ -20,6 +20,8 @@ export const Header = () => {
   const t = useTranslations('header');
   const pathname = usePathname();
 
+  const cleanPathname = pathname.replace('/ua', '/').replace('/en', '/');
+
   return (
     <>
       {/* {pathname === '/' && (
@@ -45,25 +47,25 @@ export const Header = () => {
             styleContainer={s.header}
           >
             <Link href="/" className="link">
-              <ChAber active={pathname === '/'} className={s.element}>
+              <ChAber active={cleanPathname === '/'} className={s.element}>
                 <Home color="#FFF" />
                 <span>{t('HOME')}</span>
               </ChAber>
             </Link>
             <Link href="/about" className="link">
-              <ChAber active={pathname === '/about'} className={s.element}>
+              <ChAber active={cleanPathname === '/about'} className={s.element}>
                 <Contact2 color="#FFF" />
                 {t('ABOUT')}
               </ChAber>
             </Link>
             <Link href="/projects" className="link">
-              <ChAber active={pathname === '/projects'} className={s.element}>
+              <ChAber active={cleanPathname === '/projects'} className={s.element}>
                 <Palette color="#FFF" />
                 {t('PROJECTS')}
               </ChAber>
             </Link>
             <Link href="/contact" className="link">
-              <ChAber active={pathname === '/contact'} className={s.element}>
+              <ChAber active={cleanPathname === '/contact'} className={s.element}>
                 <Contact2 color="#FFF" />
                 {t('CONTACT')}
               </ChAber>

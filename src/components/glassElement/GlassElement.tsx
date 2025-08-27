@@ -34,8 +34,6 @@ export const GlassElement = ({
     const observer = new ResizeObserver(([entry]) => {
       const { width, height } = entry.contentRect;
       setMeasuredSize({ width, height });
-
-      console.log({ width, height });
     });
 
     observer.observe(ref.current);

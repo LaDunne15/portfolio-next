@@ -3,6 +3,10 @@
 import { usePathname, useRouter } from 'next/navigation';
 import { useTransition } from 'react';
 
+import s from '@/styles/Header.module.scss';
+import classNames from 'classnames';
+import { ChAber } from '../chromaticAberration';
+
 export default function LanguageSwitcher() {
   const pathname = usePathname();
   const router = useRouter();
@@ -29,21 +33,26 @@ export default function LanguageSwitcher() {
   };
 
   return (
-    <div style={{ display: 'flex', gap: '8px' }}>
-      {(['ua', 'en'] as const).map((locale) => (
-        <button
-          key={locale}
-          onClick={() => handleSwitch(locale)}
-          disabled={isPending || currentLocale === locale}
-          style={{
-            fontWeight: currentLocale === locale ? 'bold' : 'normal',
-            textDecoration: currentLocale === locale ? 'underline' : 'none',
-            opacity: isPending && currentLocale !== locale ? 0.6 : 1,
-          }}
-        >
-          {locale.toUpperCase()}
-        </button>
-      ))}
+    <div className={s.langSwitcher}>
+      <button
+        onClick={() => handleSwitch('ua')}
+        disabled={isPending || currentLocale === 'ua'}
+        className={classNames(s.langSwitcher_btn, {
+          [s.langSwitcher_btn_active]: currentLocale === 'ua',
+        })}
+      >
+        <ChAber active={currentLocale === 'ua'}>UA</ChAber>
+      </button>
+      <span className={s.langSwitcher_separator}>|</span>
+      <button
+        onClick={() => handleSwitch('en')}
+        disabled={isPending || currentLocale === 'en'}
+        className={classNames(s.langSwitcher_btn, {
+          [s.langSwitcher_btn_active]: currentLocale === 'en',
+        })}
+      >
+        <ChAber active={currentLocale === 'en'}>EN</ChAber>
+      </button>
     </div>
   );
 }
