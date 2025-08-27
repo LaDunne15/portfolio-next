@@ -109,3 +109,8 @@ button {
 .bold {
   font-weight: bold;
 }
+
+.full-w {
+  display: block;
+  width: 100%;
+}

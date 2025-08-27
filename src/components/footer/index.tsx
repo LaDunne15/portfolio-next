@@ -2,12 +2,14 @@
 import { useTranslations } from 'next-intl';
 import { GlassElement } from '../glassElement/GlassElement';
 
+import s from '@/styles/Footer.module.scss';
+
 export const Footer = () => {
   const t = useTranslations('footer');
 
   return (
     <GlassElement width="100%" height="auto" radius={0} depth={1}>
-      <div style={{ padding: '30px' }}>
+      <div className={s.footerContainer}>
         <div></div>
         <div>
           <span>{t('Credo')}</span>

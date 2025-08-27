@@ -46,25 +46,25 @@ export const Header = () => {
             chromaticAberration={5}
             styleContainer={s.header}
           >
-            <Link href="/" className="link">
+            <Link href="/" className="link full-w">
               <ChAber active={cleanPathname === '/'} className={s.element}>
                 <Home color="#FFF" />
                 <span>{t('HOME')}</span>
               </ChAber>
             </Link>
-            <Link href="/about" className="link">
+            <Link href="/about" className="link full-w">
               <ChAber active={cleanPathname === '/about'} className={s.element}>
                 <Contact2 color="#FFF" />
                 {t('ABOUT')}
               </ChAber>
             </Link>
-            <Link href="/projects" className="link">
+            <Link href="/projects" className="link full-w">
               <ChAber active={cleanPathname === '/projects'} className={s.element}>
                 <Palette color="#FFF" />
                 {t('PROJECTS')}
               </ChAber>
             </Link>
-            <Link href="/contact" className="link">
+            <Link href="/contact" className="link full-w">
               <ChAber active={cleanPathname === '/contact'} className={s.element}>
                 <Contact2 color="#FFF" />
                 {t('CONTACT')}
