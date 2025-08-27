@@ -7,7 +7,7 @@
     padding: 30px;
 
     @media (max-width: 768px) {
-      padding: 10px;
+      padding: 15px 10px 10px 10px;
     }
 
     &_title {
@@ -47,8 +47,14 @@
 .getInTouch {
   border-radius: 30px;
   padding: 30px;
+  gap: 10px;
   display: flex;
   flex-direction: row;
+
+  @media (max-width: 768px) {
+    padding: 15px 10px 10px 10px;
+    flex-direction: column;
+  }
 
   &_main {
     display: flex;
@@ -74,9 +80,24 @@
   }
 
   &_followMe {
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    @media (max-width: 768px) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
     &_title {
       display: flex;
       justify-content: flex-end;
+
+      @media (max-width: 768px) {
+        justify-content: center;
+      }
     }
 
     &_links {
@@ -85,6 +106,10 @@
       flex-direction: row;
       gap: 5px;
     }
+  }
+
+  &_contact {
+    justify-content: flex-end;
   }
 }
 
@@ -97,15 +122,23 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  width: 100%;
 
   border: 1px solid black;
   border-radius: 5px;
   padding: 3px 10px;
 
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
+
   &_content {
     display: flex;
     flex-direction: row;
-    justify-content: stretch;
+
+    @media (max-width: 768px) {
+      justify-content: center;
+    }
 
     span {
       width: 100%;
