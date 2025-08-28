@@ -14,73 +14,34 @@ import { TECH_ITEM_NAMES } from '@/types/project';
 import { TechItem } from '@/components/techItem';
 
 import mainImage from '../../../../public/main.jpg';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
+import { useBreakpointValue } from '@/hooks/useBreakpointValue';
+import { getProfileInfo } from '@/helpers/profileInfo/profileInfo';
 
 export default function AboutPage() {
   const t = useTranslations('about');
+  const radius = useBreakpointValue({ base: 10, md: 20, lg: 40 });
+
+  const locale = useLocale();
+
+  const profile = getProfileInfo(locale as 'ua' | 'en');
 
   return (
     <main style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-      <GlassElement width="100%" height="100%" radius={30} depth={0} chromaticAberration={5}>
-        <div style={{ padding: 30 }}>
-          <span style={{ textAlign: 'center', display: 'block', height: 'auto', fontSize: '30px' }}>
-            {t('ABOUT')}
-          </span>
+      <GlassElement width="100%" height="100%" radius={radius} depth={0} chromaticAberration={5}>
+        <div className={s.title}>
+          <h2 className="center">{t('ABOUT')}</h2>
         </div>
       </GlassElement>
-      <GlassElement width="100%" height="100%" radius={30} depth={0} chromaticAberration={5}>
-        <div
-          style={{
-            padding: 30,
-            display: 'flex',
-            flexDirection: 'row',
-            gap: '10px',
-            justifyContent: 'stretch',
-          }}
-        >
-          <div
-            style={{
-              aspectRatio: 1,
-              height: '100%',
-              width: '100%',
-              maxWidth: '40%',
-            }}
-          >
-            <Image
-              style={{
-                width: '100%',
-                height: '100%',
-                aspectRatio: 1,
-                objectFit: 'cover',
-                objectPosition: 'top',
-              }}
-              src={mainImage}
-              alt=""
-            />
+      <GlassElement width="100%" height="100%" radius={radius} depth={0} chromaticAberration={5}>
+        <div className={s.aboutContainer}>
+          <div className={s.aboutContainer_imageContainer}>
+            <Image src={mainImage} alt="" />
           </div>
-          <div
-            style={{
-              flex: 1,
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'space-between',
-            }}
-          >
-            <p>Bla bla bla</p>
+          <div className={s.aboutContainer_content}>
+            <p>{profile.about}</p>
             <div>
-              <button
-                style={{
-                  background: 'none',
-                  borderRadius: '10px',
-                  padding: '10px 20px',
-                  display: 'flex',
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  gap: '10px',
-                  cursor: 'pointer',
-                  border: '1px solid black',
-                }}
-              >
+              <button className={s.aboutContainer_download}>
                 <File />
                 <span>{t('Download CV')}</span>
               </button>
@@ -88,12 +49,18 @@ export default function AboutPage() {
           </div>
         </div>
       </GlassElement>
-      <div style={{ display: 'flex', flexDirection: 'row', gap: '30px' }}>
-        <div style={{ flex: 1 }}>
-          <GlassElement width="100%" height="100%" radius={30} depth={0} chromaticAberration={5}>
-            <div style={{ padding: '30px' }}>
-              <span style={{ fontSize: 25 }}>{t('Skills')}</span>
-              <div style={{ display: 'flex', flexDirection: 'row', gap: '15px' }}>
+      <div className={s.additionalInfo}>
+        <div className={s.additionalInfo_skills}>
+          <GlassElement
+            width="100%"
+            height="100%"
+            radius={radius}
+            depth={0}
+            chromaticAberration={5}
+          >
+            <div className={s.additionalInfo_skills_content}>
+              <h3>{t('Skills')}</h3>
+              <div className={s.additionalInfo_skills_content_list}>
                 {TECH_ITEM_NAMES.map((i) => (
                   <TechItem key={i} name={i} size={30} />
                 ))}
@@ -102,8 +69,14 @@ export default function AboutPage() {
           </GlassElement>
         </div>
         <div>
-          <GlassElement width="100%" height="100%" radius={30} depth={0} chromaticAberration={5}>
-            <div style={{ padding: '30px', display: 'flex', gap: '15px' }}>
+          <GlassElement
+            width="100%"
+            height="100%"
+            radius={radius}
+            depth={0}
+            chromaticAberration={5}
+          >
+            <div className={s.additionalInfo_links}>
               <Link href="/" className="link">
                 <Image src={GitHubIcon} alt="" className={s.linkIcon} />
               </Link>

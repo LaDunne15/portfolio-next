@@ -1,13 +1,9 @@
 import { StaticImageData } from 'next/image';
+import { LocaleString } from './locale.type';
 
 export const TECH_ITEM_NAMES = ['React', 'Redux', 'MongoDB', 'Next.js'] as const;
 
 export type TechItemName = (typeof TECH_ITEM_NAMES)[number];
-
-type LocaleString = {
-  en: string;
-  ua: string;
-};
 
 export type FeatureRaw = {
   name: LocaleString;
