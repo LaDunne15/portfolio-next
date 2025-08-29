@@ -5,13 +5,10 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import TextInput from '@/components/UIKit/input';
 import dynamic from 'next/dynamic';
 
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { EMAIL_OWNER_TO } from '@/constants/env';
 import { sendEmail } from '@/services/email.service';
 import { SendMail, sendMailSchema } from '@/types/schemas/sendMail.schema';
-
-// import Picker from '@emoji-mart';
-// import emojiData from '@emoji-mart/data';
 
 import type { ReactSketchCanvasRef } from 'react-sketch-canvas';
 import { useTranslations } from 'next-intl';
@@ -23,7 +20,7 @@ const ReactSketchCanvas = dynamic(
 export default function Contact() {
   const t = useTranslations('contact');
 
-  const { control, handleSubmit /*setValue, watch*/ } = useForm({
+  const { control, handleSubmit } = useForm({
     mode: 'onBlur',
     resolver: zodResolver(sendMailSchema),
     defaultValues: {
@@ -33,15 +30,7 @@ export default function Contact() {
     },
   });
 
-  const [showEmoji, setShowEmoji] = useState(false);
-
   const canvasRef = useRef<ReactSketchCanvasRef>(null);
-
-  // const messageValue = watch('message');
-
-  // const addEmoji = (emoji: any) => {
-  //   setValue('message', messageValue + emoji.native); // додаємо обране емодзі
-  // };
 
   const submit = async (data2: SendMail) => {
     const base64Image = await canvasRef.current?.exportImage('png');
@@ -85,13 +74,7 @@ export default function Contact() {
             >
               <TextInput control={control} name="name" label={t('Name')} />
               <TextInput control={control} name="email" label={t('Email')} />
-              <TextInput control={control} name="message" label={t('Message')} multiline />
-
-              <button type="button" onClick={() => setShowEmoji((prev) => !prev)}>
-                {showEmoji ? 'Close Emoji Picker' : 'Insert Emoji'}
-              </button>
-
-              {/* {showEmoji && <Picker data={emojiData} onEmojiSelect={addEmoji} />} */}
+              <TextInput control={control} name="message" label={t('Message')} multiline emoji />
               <div>
                 <label>🌿 {t('Leave a trace')}</label>
                 <ReactSketchCanvas
