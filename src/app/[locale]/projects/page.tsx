@@ -2,6 +2,7 @@
 import { GlassElement } from '@/components/glassElement/GlassElement';
 import { ProjectCard } from '@/components/projectCard';
 import { getProjects } from '@/helpers/projects/projects';
+import { useBreakpointValue } from '@/hooks/useBreakpointValue';
 
 import s from '@/styles/Projects.module.scss';
 import { useLocale, useTranslations } from 'next-intl';
@@ -9,14 +10,12 @@ import { useLocale, useTranslations } from 'next-intl';
 export default function Projects() {
   const t = useTranslations('projects');
   const locale = useLocale();
-
+  const radius = useBreakpointValue({ base: 10, md: 20, lg: 40 });
   return (
     <main>
-      <GlassElement width="100%" height="100%" radius={30} depth={0} chromaticAberration={5}>
-        <div style={{ padding: 30 }}>
-          <span style={{ textAlign: 'center', display: 'block', height: 'auto', fontSize: '30px' }}>
-            {t('PROJECTS')}
-          </span>
+      <GlassElement width="100%" height="100%" radius={radius} depth={0} chromaticAberration={5}>
+        <div className={s.title}>
+          <h2 className="center">{t('PROJECTS')}</h2>
         </div>
       </GlassElement>
       <div className={s.projectsGrid}>

@@ -41,6 +41,13 @@
         justify-content: space-between;
     }
 
+    &_downloadContainer {
+
+        @media (max-width: 768px) {
+            align-self: center;
+        }
+    }
+
     &_download {
         background: none;
         border-radius: 10px;
@@ -66,6 +73,7 @@
 
     @media (max-width: 768px) {
         flex-direction: column;
+        align-items: center;
     }
 
     &_skills {
@@ -73,9 +81,15 @@
 
         &_content {
             padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            flex-wrap: wrap;
 
             @media (max-width: 768px) {
-                padding: 15px 10px 10px 10px;
+                padding: 15px;
+                gap: 5px;
+                align-items: center;
             }
 
             &_list {
@@ -88,16 +102,20 @@
 
     &_links {
         padding: 30px; 
-        display: flex; 
+        display: flex;
         gap: 15px;
+        height: 100%;
+        box-sizing: border-box;
+        align-items: center;
 
         @media (max-width: 768px) {
-            padding: 15px 10px 10px 10px;
+            padding: 10px 10px 10px 10px;
+            justify-content: center;
         }
     }
 }
 
 .linkIcon {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
 }

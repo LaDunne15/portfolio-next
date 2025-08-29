@@ -40,7 +40,7 @@ export default function AboutPage() {
           </div>
           <div className={s.aboutContainer_content}>
             <p>{profile.about}</p>
-            <div>
+            <div className={s.aboutContainer_downloadContainer}>
               <button className={s.aboutContainer_download}>
                 <File />
                 <span>{t('Download CV')}</span>
@@ -70,7 +70,7 @@ export default function AboutPage() {
         </div>
         <div>
           <GlassElement
-            width="100%"
+            width="auto"
             height="100%"
             radius={radius}
             depth={0}

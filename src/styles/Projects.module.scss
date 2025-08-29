@@ -137,3 +137,11 @@
     }
   }
 }
+
+.title {
+  padding: 30px;
+
+  @media (max-width: 768px) {
+    padding: 15px 10px 10px 10px;
+  }
+}

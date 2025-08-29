@@ -1,7 +1,15 @@
 import { StaticImageData } from 'next/image';
 import { LocaleString } from './locale.type';
 
-export const TECH_ITEM_NAMES = ['React', 'Redux', 'MongoDB', 'Next.js'] as const;
+export const TECH_ITEM_NAMES = [
+  'React',
+  'Redux',
+  'MongoDB',
+  'Next.js',
+  'Node.js',
+  'Nest',
+  'Prisma',
+] as const;
 
 export type TechItemName = (typeof TECH_ITEM_NAMES)[number];
 
