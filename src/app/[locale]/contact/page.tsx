@@ -10,8 +10,11 @@ import { EMAIL_OWNER_TO } from '@/constants/env';
 import { sendEmail } from '@/services/email.service';
 import { SendMail, sendMailSchema } from '@/types/schemas/sendMail.schema';
 
+import s from '@/styles/Contact.module.scss';
+
 import type { ReactSketchCanvasRef } from 'react-sketch-canvas';
 import { useTranslations } from 'next-intl';
+import { useBreakpointValue } from '@/hooks/useBreakpointValue';
 const ReactSketchCanvas = dynamic(
   () => import('react-sketch-canvas').then((mod) => mod.ReactSketchCanvas),
   { ssr: false }
@@ -19,6 +22,8 @@ const ReactSketchCanvas = dynamic(
 
 export default function Contact() {
   const t = useTranslations('contact');
+
+  const radius = useBreakpointValue({ base: 10, md: 20, lg: 40 });
 
   const { control, handleSubmit } = useForm({
     mode: 'onBlur',
@@ -49,29 +54,20 @@ export default function Contact() {
   };
 
   return (
-    <main style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-      <GlassElement width="100%" height="100%" radius={30} depth={0} chromaticAberration={5}>
-        <div style={{ padding: 30 }}>
-          <span style={{ textAlign: 'center', display: 'block', height: 'auto', fontSize: '30px' }}>
-            {t('CONTACT')}
-          </span>
+    <main className={s.contactContainer}>
+      <GlassElement width="100%" height="100%" radius={radius} depth={0} chromaticAberration={5}>
+        <div className={s.header}>
+          <h2 className="center">{t('CONTACT')}</h2>
         </div>
       </GlassElement>
-      <GlassElement width="100%" height="100%" radius={30} depth={0} chromaticAberration={5}>
-        <div style={{ display: 'flex', flexDirection: 'row', padding: '30px', gap: '10px' }}>
-          <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-            <span style={{ fontSize: '25px' }}>{t('Get in touch')}</span>
-            <span style={{ fontSize: '20px', maxWidth: '60%' }}>{t('Get in touch text')}</span>
+      <GlassElement width="100%" height="100%" radius={radius} depth={0} chromaticAberration={5}>
+        <div className={s.formSection}>
+          <div className={s.formSection_title}>
+            <h3>{t('Get in touch')}</h3>
+            <h4>{t('Get in touch text')}</h4>
           </div>
-          <div style={{ flex: 1 }}>
-            <form
-              onSubmit={handleSubmit(submit)}
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '10px',
-              }}
-            >
+          <div className="flex">
+            <form onSubmit={handleSubmit(submit)} className={s.form}>
               <TextInput control={control} name="name" label={t('Name')} />
               <TextInput control={control} name="email" label={t('Email')} />
               <TextInput control={control} name="message" label={t('Message')} multiline emoji />
