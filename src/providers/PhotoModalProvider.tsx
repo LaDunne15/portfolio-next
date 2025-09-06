@@ -67,7 +67,7 @@ export function PhotoModalProvider({ children }: { children: ReactNode }) {
         >
           <GlassElement width="100%" height="100%" radius={0} depth={1} chromaticAberration={5}>
             <div className={s.photoContainer}>
-              <Image src={gallery[index]} alt="selected" fill style={{ objectFit: 'contain' }} />
+              <Image src={gallery[index]} alt="selected" fill className={s.image} />
               {!onePhoto && (
                 <button className={s.prev} onClick={prevPhoto}>
                   <span className={s.iconContainer}>{'<'}</span>

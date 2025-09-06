@@ -14,8 +14,8 @@
     .close {
         cursor: pointer;
         position: absolute;
-        top: 10;
-        right: 10;
+        top: 10px;
+        right: 10px;
         background: none;
         padding: 5px 10px;
         border: 2px solid var(--contrast-color);
@@ -63,4 +63,8 @@
             background: linear-gradient(to left, var(--main-color) 0%, transparent 100%);
         }
     }
+}
+
+.image {
+    object-fit: contain;
 }

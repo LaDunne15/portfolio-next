@@ -1,21 +1,34 @@
+.container {
+  width: 100%;
+  text-align: center; 
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.headerContainer {
+  display: inline-block;
+  padding: 10;
+}
+
 .header {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 50px;
+  gap: 40px;
   flex-direction: row;
   justify-content: center;
   align-items: stretch;
-  padding: 10px 50px;
+  padding: 20px 40px;
 
   @media (max-width: 768px) {
-    gap: 30px;
+    gap: 20px;
     padding: 10px 20px;
   }
 
   @media (max-width: 480px) {
     gap: 10px;
     justify-content: space-between;
-    padding: 10px 10px;
+    padding: 5px 20px;
   }
 }
 
@@ -44,13 +57,21 @@
 }
 
 .intro {
-  height: 100%;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: $pink;
+  color: white;
+  gap: 40px;
   text-shadow: 0px 0px 5px black;
+  overflow: hidden;
+
+  &_text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .langSwitcher {
@@ -75,5 +96,119 @@
   &_separator {
     color: white;
     text-shadow: 0px 2px 2px black;
+  }
+}
+
+
+
+
+
+
+.intro_glass,
+.intro_glass_2,
+.intro_glass_3 {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.intro_glass {
+  z-index: -2;
+}
+
+.intro_glass_2 {
+  z-index: -1;
+}
+
+.intro_glass_3 {
+  z-index: -3;
+}
+
+.intro_glass {
+  background: radial-gradient(circle at center, rgba(166, 223, 255, 0.6), rgba(255, 199, 224, 0.3));
+  transform: translateX(-200px) translateY(50px);
+  animation: floatCircle1 8s linear infinite;
+}
+
+.intro_glass_2 {
+  background: radial-gradient(circle at center, rgba(200, 255, 241, 0.6), rgba(217, 200, 255, 0.3));
+  transform: translateX(0px) translateY(50px);
+  animation: floatCircle2 20s linear infinite;
+}
+
+.intro_glass_3 {
+  background: radial-gradient(circle at center, rgba(255, 216, 194, 0.6), rgba(255, 199, 224, 0.3));
+  transform: translateX(200px) translateY(50px); 
+  animation: floatCircle3 12s linear infinite;
+}
+
+@keyframes floatCircle1 {
+  0%   { transform: translateX(-150px) translateY(0); }
+  25%  { transform: translateX(-120px) translateY(-40px); }
+  50%  { transform: translateX(-150px) translateY(-80px); }
+  75%  { transform: translateX(-180px) translateY(-40px); }
+  100% { transform: translateX(-150px) translateY(0); }
+}
+
+@keyframes floatCircle2 {
+  0%   { transform: translateX(0px) translateY(0); }
+  25%  { transform: translateX(30px) translateY(-50px); }
+  50%  { transform: translateX(0px) translateY(-100px); }
+  75%  { transform: translateX(-30px) translateY(-50px); }
+  100% { transform: translateX(0px) translateY(0); }
+}
+
+@keyframes floatCircle3 {
+  0%   { transform: translateX(150px) translateY(0); }
+  25%  { transform: translateX(180px) translateY(-40px); }
+  50%  { transform: translateX(150px) translateY(-80px); }
+  75%  { transform: translateX(120px) translateY(-40px); }
+  100% { transform: translateX(150px) translateY(0); }
+}
+
+
+/* Медіа-запит для екранів менше 768px (типові мобільні) */
+@media (max-width: 768px) {
+  .intro_glass {
+    transform: translateY(-100px);
+    animation: floatCircle1Vertical 8s linear infinite;
+  }
+
+  .intro_glass_2 {
+    transform: translateY(0px);
+    animation: floatCircle2Vertical 20s linear infinite;
+  }
+
+  .intro_glass_3 {
+    transform: translateY(100px);
+    animation: floatCircle3Vertical 12s linear infinite;
+  }
+
+  /* Нові анімації для вертикального руху */
+  @keyframes floatCircle1Vertical {
+    0%   { transform: translateY(-150px) translateX(0); }
+    25%  { transform: translateY(-120px) translateX(-40px); }
+    50%  { transform: translateY(-150px) translateX(-80px); }
+    75%  { transform: translateY(-180px) translateX(-40px); }
+    100% { transform: translateY(-150px) translateX(0); }
+  }
+
+  @keyframes floatCircle2Vertical {
+    0%   { transform: translateY(0px) translateX(0); }
+    25%  { transform: translateY(30px) translateX(50px); }
+    50%  { transform: translateY(0px) translateX(100px); }
+    75%  { transform: translateY(-30px) translateX(50px); }
+    100% { transform: translateY(0px) translateX(0); }
+  }
+
+  @keyframes floatCircle3Vertical {
+    0%   { transform: translateY(150px) translateX(0); }
+    25%  { transform: translateY(180px) translateX(40px); }
+    50%  { transform: translateY(150px) translateX(80px); }
+    75%  { transform: translateY(120px) translateX(40px); }
+    100% { transform: translateY(150px) translateX(0); }
   }
 }

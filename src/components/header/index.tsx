@@ -5,16 +5,11 @@ import { GlassElement } from '../glassElement/GlassElement';
 import { Contact2, Home, Palette } from 'lucide-react';
 import { ChAber } from '../chromaticAberration';
 
-// import dynamic from 'next/dynamic';
-// import { Intro } from './_components/intro';
-
 import s from '@/styles/Header.module.scss';
 import LanguageSwitcher from '../langSwitcher';
 import { useTranslations } from 'next-intl';
-
-// const PaperCanvas2 = dynamic(() => import('@/components/paperCanvas2'), {
-//   ssr: false,
-// });
+import { Intro } from './_components/intro';
+import { useBreakpointValue } from '@/hooks/useBreakpointValue';
 
 export const Header = () => {
   const t = useTranslations('header');
@@ -22,26 +17,17 @@ export const Header = () => {
 
   const cleanPathname = pathname.replace('/ua', '/').replace('/en', '/');
 
+  const radius = useBreakpointValue({ base: 10, md: 20, lg: 40 });
+
   return (
     <>
-      {/* {pathname === '/' && (
-        <div style={{ position: 'sticky' }}>
-          <PaperCanvas2>
-            <Intro />
-          </PaperCanvas2>
-        </div>
-      )} */}
-      <div style={{ width: '100%', textAlign: 'center', position: 'sticky', top: 0, zIndex: 10 }}>
-        <div
-          style={{
-            display: 'inline-block',
-            padding: 10,
-          }}
-        >
+      {pathname === '/' && <Intro />}
+      <div className={s.container}>
+        <div className={s.headerContainer}>
           <GlassElement
             width="auto"
             height="auto"
-            radius={10}
+            radius={radius}
             depth={1}
             chromaticAberration={5}
             styleContainer={s.header}
