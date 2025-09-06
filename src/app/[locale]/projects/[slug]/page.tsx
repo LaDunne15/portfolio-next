@@ -11,6 +11,7 @@ import { useParams } from 'next/navigation';
 import s from '@/styles/Project.module.scss';
 import { useLocale } from 'next-intl';
 import { useTranslations } from 'use-intl';
+import { useBreakpointValue } from '@/hooks/useBreakpointValue';
 
 export default function Project() {
   const { slug } = useParams<{ slug: string }>();
@@ -22,13 +23,18 @@ export default function Project() {
 
   const { open } = usePhotoModal();
 
+  const radius = useBreakpointValue({ base: 10, md: 20, lg: 40 });
+
   if (!project) return null;
 
   return (
-    <main className={s.projectContainer}>
+    <main
+      className={s.projectContainer}
+      style={{ '--main-color': project.mainColor } as React.CSSProperties}
+    >
       <Link href="/projects" className="link">
         <div>
-          <GlassElement width="100%" height="100%" radius={20} depth={0}>
+          <GlassElement width="100%" height="100%" radius={radius} depth={0}>
             <div className={s.back}>
               <ArrowLeft />
               <span>{t('Back')}</span>
@@ -36,97 +42,48 @@ export default function Project() {
           </GlassElement>
         </div>
       </Link>
-      <GlassElement width="100%" height="100%" radius={30} depth={0} chromaticAberration={5}>
-        <div style={{ padding: '30px' }}>
-          <div style={{ display: 'flex', flexDirection: 'row', gap: '15px' }}>
+      <GlassElement width="100%" height="100%" radius={radius} depth={0} chromaticAberration={5}>
+        <div className={s.project}>
+          <div className={s.project_content}>
             <div
-              style={{
-                flex: 1,
-                maxWidth: '50%',
-                maxHeight: '80vh',
-              }}
+              className={s.project_content_imageContainer}
               onClick={() => open([project.mainImage], 0, project.mainColor)}
             >
-              <Image
-                src={project.mainImage}
-                alt=""
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'contain',
-                }}
-              />
+              <Image src={project.mainImage} alt="" className={s.image} />
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-              <div
-                style={{
-                  flex: 1,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '10px',
-                }}
-              >
-                <span style={{ fontSize: '30px' }}>{project.title}</span>
-                <span>{project.devDirection}</span>
-                <span>{project.description}</span>
-                <div>
-                  <span>{t('Tech Stack')}</span>
-                  <div
-                    style={{
-                      display: 'flex',
-                      flexDirection: 'row',
-                      gap: '10px',
-                    }}
-                  >
+            <div className={s.project_content_info}>
+              <div className={s.project_content_info_text}>
+                <h1>{project.title}</h1>
+                <h3>{project.devDirection}</h3>
+                <h4>{project.description}</h4>
+                <div className={s.project_content_info_text_stackContainer}>
+                  <h4>{t('Tech Stack')}</h4>
+                  <div className={s.project_content_info_text_stack}>
                     {project.stack.map((i) => (
                       <TechItem name={i} key={i} size={40} />
                     ))}
                   </div>
                 </div>
               </div>
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  gap: '10px',
-                }}
-              >
+              <div className={s.project_content_info_links}>
                 <Link href="/" className="link">
-                  <div
-                    style={{
-                      backgroundColor: '#000',
-                      color: '#fff',
-                      padding: '5px 10px',
-                      borderRadius: '10px',
-                    }}
-                  >
-                    {t('Demo')}
-                  </div>
+                  <div className={s.project_content_info_links_item}>{t('Demo')}</div>
                 </Link>
                 <Link href="/" className="link">
-                  <div
-                    style={{
-                      backgroundColor: '#000',
-                      color: '#fff',
-                      padding: '5px 10px',
-                      borderRadius: '10px',
-                    }}
-                  >
-                    {t('GitHub')}
-                  </div>
+                  <div className={s.project_content_info_links_item}>{t('GitHub')}</div>
                 </Link>
               </div>
             </div>
           </div>
           {project.mainFeatures && (
-            <div style={{ paddingTop: '30px' }}>
-              <span style={{ fontSize: '30px' }}>{t('Main Features')}</span>
+            <div className={s.project_mainFeatures}>
+              <h2>{t('Main Features')}</h2>
               <ul>
                 {project.mainFeatures.map((i) => (
-                  <li key={i.name} style={{ textDecoration: 'none' }}>
-                    <div style={{ display: 'flex', flexDirection: 'column' }}>
-                      <span style={{ fontSize: '20px' }}>{i.name}</span>
-                      <span>{i.description}</span>
+                  <li key={i.name}>
+                    <div>
+                      <h3>{i.name}</h3>
+                      <h4>{i.description}</h4>
                     </div>
                   </li>
                 ))}
@@ -134,24 +91,16 @@ export default function Project() {
             </div>
           )}
           {project.imgs && (
-            <div style={{ paddingTop: '30px' }}>
-              <span style={{ fontSize: '30px' }}>{t('Gallery')}</span>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px' }}>
+            <div className={s.project_gallery}>
+              <h2>{t('Gallery')}</h2>
+              <div className={s.project_gallery_images}>
                 {project.imgs.map((i, index) => (
                   <div
                     key={i.src}
-                    style={{ display: 'flex', flexDirection: 'column', aspectRatio: 1 }}
+                    className={s.project_gallery_images_item}
                     onClick={() => open(project.imgs, index, project.mainColor)}
                   >
-                    <Image
-                      src={i}
-                      alt=""
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                      }}
-                    />
+                    <Image src={i} alt="" />
                   </div>
                 ))}
               </div>

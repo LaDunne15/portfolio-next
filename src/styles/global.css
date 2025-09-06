@@ -1,7 +1,6 @@
 :root{
-  /* змінні — легко підлаштувати під дизайн-систему */
-  --h1-min: 1.6rem;  /* мобайл мін */
-  --h1-max: 4rem;    /* десктоп макс */
+  --h1-min: 1.6rem;
+  --h1-max: 4rem;    
   --h2-min: 1.4rem;
   --h2-max: 3rem;
   --h3-min: 1.2rem;
@@ -12,6 +11,17 @@
   --h5-max: 1.25rem;
   --h6-min: 0.85rem;
   --h6-max: 1rem;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --h1-min: 2rem;   /* було 1.6rem */
+    --h2-min: 1.75rem;
+    --h3-min: 1.5rem;
+    --h4-min: 1.25rem;
+    --h5-min: 1.1rem;
+    --h6-min: 1rem;
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
