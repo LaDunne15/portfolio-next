@@ -1,4 +1,9 @@
 {
+  "intro": {
+    "Welcome": "Welcome. My name is",
+    "FS-dev": "a fullstack developer",
+    "passion": "with passion to do various interesting things"
+  },
   "header": {
     "HOME": "HOME",
     "ABOUT": "ABOUT",

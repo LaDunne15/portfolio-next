@@ -8,6 +8,8 @@ export type ProfileRaw = {
   email: string;
   phone: string;
   about: LocaleString;
+  linkedIn: string;
+  gitHub: string;
 };
 
 export type Profile = {
@@ -17,4 +19,6 @@ export type Profile = {
   email: string;
   phone: string;
   about: string;
+  linkedIn: string;
+  gitHub: string;
 };

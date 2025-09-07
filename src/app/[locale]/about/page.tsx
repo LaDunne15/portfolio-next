@@ -26,6 +26,13 @@ export default function AboutPage() {
 
   const profile = getProfileInfo(locale as 'ua' | 'en');
 
+  const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = '/files/CV_Koshelnyi.pdf';
+    link.download = 'CV_Koshelnyi.pdf';
+    link.click();
+  };
+
   return (
     <main style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
       <GlassElement width="100%" height="100%" radius={radius} depth={0} chromaticAberration={5}>
@@ -41,7 +48,7 @@ export default function AboutPage() {
           <div className={s.aboutContainer_content}>
             <p>{profile.about}</p>
             <div className={s.aboutContainer_downloadContainer}>
-              <button className={s.aboutContainer_download}>
+              <button className={s.aboutContainer_download} onClick={handleDownload}>
                 <File />
                 <span>{t('Download CV')}</span>
               </button>

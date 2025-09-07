@@ -15,13 +15,13 @@ export const Header = () => {
   const t = useTranslations('header');
   const pathname = usePathname();
 
-  const cleanPathname = pathname.replace('/ua', '/').replace('/en', '/');
+  const cleanPathname = pathname.replace(/^\/(ua|en)/, '') || '/';
 
   const radius = useBreakpointValue({ base: 10, md: 20, lg: 40 });
 
   return (
     <>
-      {pathname === '/' && <Intro />}
+      {cleanPathname === '/' && <Intro />}
       <div className={s.container}>
         <div className={s.headerContainer}>
           <GlassElement
