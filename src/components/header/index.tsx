@@ -15,7 +15,7 @@ export const Header = () => {
   const t = useTranslations('header');
   const pathname = usePathname();
 
-  const cleanPathname = pathname.replace(/^\/(ua|en)/, '') || '/';
+  const cleanPathname = pathname?.replace(/^\/(ua|en)/, '') || '/';
 
   const radius = useBreakpointValue({ base: 10, md: 20, lg: 40 });
 

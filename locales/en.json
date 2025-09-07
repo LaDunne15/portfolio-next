@@ -37,7 +37,12 @@
     "Email": "Email",
     "Message": "Message",
     "Leave a trace": "Leave a trace",
-    "Send": "Send"
+    "Send": "Send",
+    "Sending": "Sending... ",
+    "Message sent": "Message sent",
+    "Failed to send message": "Failed to send message",
+    "Required": "Required field",
+    "Invalid email": "Invalid email"
   },
   "project": {
     "Back": "Back",

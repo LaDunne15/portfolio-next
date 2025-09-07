@@ -7,25 +7,27 @@ import s from '@/styles/Header.module.scss';
 import classNames from 'classnames';
 import { ChAber } from '../chromaticAberration';
 
+type Locale = 'ua' | 'en';
+
 export default function LanguageSwitcher() {
   const pathname = usePathname();
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
 
-  const segments = pathname.split('/').filter(Boolean);
+  const segments = pathname?.split('/').filter(Boolean) ?? [];
 
   // Поточна мова
-  const currentLocale = segments[0] === 'ua' ? 'ua' : 'en';
+  const currentLocale: Locale = segments[0] === 'ua' ? 'ua' : 'en';
 
   // Функція для генерації нового шляху під вибрану мову
-  const getPathForLocale = (locale: 'ua' | 'en') => {
+  const getPathForLocale = (locale: Locale): string => {
     if (segments.length > 0) {
       return '/' + [locale, ...segments.slice(currentLocale === 'ua' ? 1 : 0)].join('/');
     }
     return '/' + locale;
   };
 
-  const handleSwitch = (locale: 'ua' | 'en') => {
+  const handleSwitch = (locale: Locale) => {
     const newPath = getPathForLocale(locale);
     startTransition(() => {
       router.push(newPath);

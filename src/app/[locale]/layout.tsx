@@ -9,6 +9,7 @@ import localFont from 'next/font/local';
 import '@/styles/global.css';
 import '@/styles/global.module.scss';
 import { BreakpointProvider } from '@/providers/BreakpointProvider';
+import { ToastContainer } from 'react-toastify';
 
 const oswaldMedium = localFont({
   src: '../../assets/fonts/oswald/Oswald-Medium.ttf',
@@ -44,6 +45,16 @@ export default async function RootLayout({ children, params }: Props) {
               <Header />
               <div className="content">{children}</div>
               <Footer />
+              <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                pauseOnHover
+                draggable
+                theme="dark"
+              />
             </BreakpointProvider>
           </PhotoModalProvider>
         </NextIntlClientProvider>

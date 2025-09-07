@@ -1,16 +1,12 @@
-'use client';
 import '@/styles/global.css';
-import { About } from '@/components/about';
-import { GetInTouch } from '@/components/getInTouch';
-import { RecentProjects } from '@/components/recentProjects';
-import s from '@/styles/Home.module.scss';
+import Home from '@/pages/home';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Portfolio',
+  description: 'Portfolio',
+};
 
 export default function HomePage() {
-  return (
-    <main className={s.home}>
-      <About />
-      <RecentProjects />
-      <GetInTouch />
-    </main>
-  );
+  return <Home />;
 }

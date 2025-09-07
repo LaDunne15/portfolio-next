@@ -37,7 +37,12 @@
     "Email": "Email",
     "Message": "Повідомлення",
     "Leave a trace": "Залиште мітку",
-    "Send": "Надіслати"
+    "Send": "Надіслати",
+    "Sending": "Відправляється...",
+    "Message sent": "Повідомлення надіслано",
+    "Failed to send message": "Помилка при надсиланні повідомлення",
+    "Required": "Обов'язкове поле",
+    "Invalid email": "Некоректний email"
   },
   "project": {
     "Back": "Назад",
