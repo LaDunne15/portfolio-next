@@ -82,7 +82,7 @@ const TextInput = <T extends FieldValues>({
               </div>
             )}
           </div>
-          {error && <span style={{ fontSize: '0.8rem' }}>{error.message}</span>}
+          {error && <span style={{ fontSize: '0.8rem' }}>* {error.message}</span>}
         </div>
       )}
     />
