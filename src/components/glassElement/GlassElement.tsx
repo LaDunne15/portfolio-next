@@ -3,6 +3,8 @@ import { getDisplacementFilter, DisplacementOptions } from './getDisplacementFil
 import { getDisplacementMap } from './getDisplacementMap';
 import styles from './glassElements.module.css';
 import classNames from 'classnames';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store/store';
 
 type GlassElementProps = Omit<DisplacementOptions, 'width' | 'height'> & {
   width: number | string;
@@ -28,6 +30,8 @@ export const GlassElement = ({
   const ref = useRef<HTMLDivElement>(null);
   const [measuredSize, setMeasuredSize] = useState({ width: 300, height: 300 });
 
+  const mode = useSelector((state: RootState) => state.mode.value);
+
   useEffect(() => {
     if (!ref.current) return;
 
@@ -44,6 +48,7 @@ export const GlassElement = ({
   const depth = baseDepth;
 
   const filterUrl = useMemo(() => {
+    if (mode === 'light') return '';
     return getDisplacementFilter({
       height: measuredSize.height,
       width: measuredSize.width,
@@ -52,7 +57,7 @@ export const GlassElement = ({
       strength,
       chromaticAberration,
     });
-  }, [measuredSize, radius, depth, strength, chromaticAberration]);
+  }, [measuredSize, radius, depth, strength, chromaticAberration, mode]);
 
   const style: CSSProperties = {
     height: typeof height === 'number' ? `${height}px` : height,

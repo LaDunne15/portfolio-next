@@ -1,7 +1,7 @@
 import { Profile, ProfileRaw } from '@/types/profile.type';
 
 import P from '@/helpers/projects/images/pogodka/main.png';
-import { GITHUB, LINKEDIN } from '@/constants/env';
+import { EMAIL, GITHUB, LINKEDIN, PHONE } from '@/constants/env';
 
 const profileInfo: ProfileRaw = {
   profilePhoto: P,
@@ -13,8 +13,8 @@ const profileInfo: ProfileRaw = {
     en: 'Koshelnyi',
     ua: 'Кошельний',
   },
-  email: 'VYHtP@example.com',
-  phone: '+380 50 466 32 12',
+  email: EMAIL,
+  phone: PHONE,
   about: {
     en: 'I am a front-end developer. I am learning React, Next.js, TypeScript and other technologies. I am also learning Node.js, Express.js and MongoDB.',
     ua: 'Я front-end розробник. Я вивчаю React, Next.js, TypeScript та інші технології. Я також вивчаю Node.js, Express.js та MongoDB.',

@@ -8,6 +8,8 @@ import '@/styles/global.css';
 import '@/styles/global.module.scss';
 import { BreakpointProvider } from '@/providers/BreakpointProvider';
 import { ToastContainer } from 'react-toastify';
+import Providers from '@/store/providers';
+import ModeSwitcher from '@/components/modeSwitcher';
 
 const oswaldMedium = localFont({
   src: '../../assets/fonts/oswald/Oswald-Medium.ttf',
@@ -30,23 +32,26 @@ export default function RootLayout({
     <html lang={locale}>
       <body className={oswaldMedium.className}>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <PhotoModalProvider>
-            <BreakpointProvider>
-              <Header />
-              <div className="content">{children}</div>
-              <Footer />
-              <ToastContainer
-                position="top-right"
-                autoClose={3000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                pauseOnHover
-                draggable
-                theme="dark"
-              />
-            </BreakpointProvider>
-          </PhotoModalProvider>
+          <Providers>
+            <PhotoModalProvider>
+              <BreakpointProvider>
+                <Header />
+                <div className="content">{children}</div>
+                <Footer />
+                <ToastContainer
+                  position="top-right"
+                  autoClose={3000}
+                  hideProgressBar={false}
+                  newestOnTop={false}
+                  closeOnClick
+                  pauseOnHover
+                  draggable
+                  theme="dark"
+                />
+                <ModeSwitcher />
+              </BreakpointProvider>
+            </PhotoModalProvider>
+          </Providers>
         </NextIntlClientProvider>
       </body>
     </html>

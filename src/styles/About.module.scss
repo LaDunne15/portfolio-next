@@ -82,9 +82,9 @@
         &_content {
             padding: 30px;
             display: flex;
+            flex-wrap: wrap;
             flex-direction: column;
             gap: 15px;
-            flex-wrap: wrap;
 
             @media (max-width: 768px) {
                 padding: 15px;
@@ -95,7 +95,12 @@
             &_list {
                 display: flex;
                 flex-direction: row;
+                flex-wrap: wrap;
                 gap: 15px;
+
+                @media (max-width: 768px) {
+                    justify-content: center;
+                }
             }
         }
     }

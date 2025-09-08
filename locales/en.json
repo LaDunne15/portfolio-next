@@ -55,5 +55,11 @@
   "footer": {
     "Credo": "Small steps today lead to a great journey tomorrow",
     "Portfolio": "Portfolio v3.0 © {year} Osh"
+  },
+  "mode": {
+    "Full mode": "Full mode",
+    "Lite mode": "Light mode",
+    "Switch to Lite": "Switch to Lite",
+    "Switch to Full": "Switch to Full"
   }
 }

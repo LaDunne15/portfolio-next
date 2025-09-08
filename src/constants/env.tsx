@@ -4,3 +4,5 @@ export const EMAIL_JS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAIL_JS_PUBLIC_KEY ?
 export const EMAIL_OWNER_TO = process.env.NEXT_PUBLIC_EMAIL_OWNER_TO ?? '';
 export const LINKEDIN = process.env.NEXT_PUBLIC_LINKEDIN ?? '';
 export const GITHUB = process.env.NEXT_PUBLIC_GITHUB ?? '';
+export const EMAIL = process.env.NEXT_PUBLIC_EMAIL ?? '';
+export const PHONE = process.env.NEXT_PUBLIC_PHONE ?? '';

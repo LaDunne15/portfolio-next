@@ -6,7 +6,6 @@ import Image from 'next/image';
 
 import GitHubIcon from '@/assets/svg/github.svg';
 import LinkedInIcon from '@/assets/svg/linkedin.svg';
-import InstagramIcon from '@/assets/svg/instagram.svg';
 import Link from 'next/link';
 
 import s from '@/styles/About.module.scss';
@@ -84,14 +83,11 @@ export default function About() {
             chromaticAberration={5}
           >
             <div className={s.additionalInfo_links}>
-              <Link href="/" className="link">
+              <Link href={profile.gitHub} className="link">
                 <Image src={GitHubIcon} alt="" className={s.linkIcon} />
               </Link>
-              <Link href="/" className="link">
+              <Link href={profile.linkedIn} className="link">
                 <Image src={LinkedInIcon} alt="" className={s.linkIcon} />
-              </Link>
-              <Link href="/" className="link">
-                <Image src={InstagramIcon} alt="" className={s.linkIcon} />
               </Link>
             </div>
           </GlassElement>
