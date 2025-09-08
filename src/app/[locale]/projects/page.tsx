@@ -1,4 +1,4 @@
-import Projects from '@/pages/projects';
+import Projects from '@/components/pages/projects';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {

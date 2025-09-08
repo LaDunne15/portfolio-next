@@ -1,5 +1,5 @@
 import getProjectBySlug from '@/helpers/projects/getProjectBySlug';
-import ProjectScreen from '@/pages/project';
+import ProjectScreen from '@/components/pages/project';
 
 type Params = {
   locale: 'ua' | 'en';

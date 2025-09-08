@@ -1,5 +1,5 @@
 import '@/styles/global.css';
-import Home from '@/pages/home';
+import Home from '@/components/pages/home';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
