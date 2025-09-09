@@ -9,11 +9,6 @@ export type DisplacementOptions = {
   chromaticAberration?: number;
 };
 
-/**
- * Creating the displacement filter.
- * The file complexity is due to the experimental "chromatic aberration" effect;
- * filters from first `feColorMatrix` to last `feBlend` can be removed if the effect is not needed.
- */
 export const getDisplacementFilter = ({
   height,
   width,

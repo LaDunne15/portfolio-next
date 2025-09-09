@@ -1,4 +1,3 @@
-// src/store/slices/modeSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export type ModeType = 'full' | 'light';
@@ -8,7 +7,7 @@ interface ModeState {
 }
 
 const initialState: ModeState = {
-  value: 'full', // дефолтний режим
+  value: 'full',
 };
 
 const modeSlice = createSlice({

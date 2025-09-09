@@ -16,10 +16,8 @@ export default function LanguageSwitcher() {
 
   const segments = pathname?.split('/').filter(Boolean) ?? [];
 
-  // Поточна мова
   const currentLocale: Locale = segments[0] === 'ua' ? 'ua' : 'en';
 
-  // Функція для генерації нового шляху під вибрану мову
   const getPathForLocale = (locale: Locale): string => {
     if (segments.length > 0) {
       return '/' + [locale, ...segments.slice(currentLocale === 'ua' ? 1 : 0)].join('/');

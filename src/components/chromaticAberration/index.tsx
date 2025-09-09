@@ -5,8 +5,8 @@ import classNames from 'classnames';
 
 type ChAberProps = {
   children: React.ReactNode;
-  strength?: number; // сила ефекту
-  active?: boolean; // true = завжди активний ефект
+  strength?: number;
+  active?: boolean;
   className?: string;
 };
 

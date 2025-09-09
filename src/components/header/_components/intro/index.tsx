@@ -13,7 +13,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 
 export const Intro = () => {
-  const [sizes, setSizes] = useState({ size1: 300, size2: 240, size3: 210 }); // дефолтні значення
+  const [sizes, setSizes] = useState({ size1: 300, size2: 240, size3: 210 });
 
   useEffect(() => {
     const updateSizes = () => {
@@ -27,7 +27,7 @@ export const Intro = () => {
       });
     };
 
-    updateSizes(); // одразу викликаємо при монтуванні
+    updateSizes();
     window.addEventListener('resize', updateSizes);
 
     return () => window.removeEventListener('resize', updateSizes);

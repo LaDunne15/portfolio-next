@@ -1,9 +1,9 @@
 import { useBreakpoint } from '@/providers/BreakpointProvider';
 
 type BreakpointValues<T> = {
-  base: T; // мобілка (default)
-  md?: T; // планшет
-  lg?: T; // десктоп
+  base: T;
+  md?: T;
+  lg?: T;
 };
 
 export function useBreakpointValue<T>(values: BreakpointValues<T>): T {

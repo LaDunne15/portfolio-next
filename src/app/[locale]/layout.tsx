@@ -10,6 +10,7 @@ import { BreakpointProvider } from '@/providers/BreakpointProvider';
 import { ToastContainer } from 'react-toastify';
 import Providers from '@/store/providers';
 import ModeSwitcher from '@/components/modeSwitcher';
+import GradientBodyBackground from '@/components/background';
 
 const oswaldMedium = localFont({
   src: '../../assets/fonts/oswald/Oswald-Medium.ttf',
@@ -35,6 +36,7 @@ export default function RootLayout({
           <Providers>
             <PhotoModalProvider>
               <BreakpointProvider>
+                <GradientBodyBackground />
                 <Header />
                 <div className="content">{children}</div>
                 <Footer />

@@ -15,7 +15,7 @@
 
 @media (max-width: 768px) {
   :root {
-    --h1-min: 2rem;   /* було 1.6rem */
+    --h1-min: 2rem;
     --h2-min: 1.75rem;
     --h3-min: 1.5rem;
     --h4-min: 1.25rem;
@@ -40,11 +40,11 @@ h6 { font-size: clamp(var(--h6-min), 0.8vw + 0.15rem, var(--h6-max)); }
 
 
 body {
-  background-image: url('../assets/images/main2.jpg');
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   margin: 0;
+  overflow-x: hidden;
 }
 
 @font-face {
