@@ -42,7 +42,8 @@
     "Message sent": "Повідомлення надіслано",
     "Failed to send message": "Помилка при надсиланні повідомлення",
     "Required": "Обов'язкове поле",
-    "Invalid email": "Некоректний email"
+    "Invalid email": "Некоректний email",
+    "Clear": "Очистити"
   },
   "project": {
     "Back": "Назад",

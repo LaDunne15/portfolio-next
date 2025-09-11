@@ -60,21 +60,21 @@ export const Intro = () => {
       </div>
 
       <GlassElement
+        width={sizes.size1}
+        height={sizes.size1}
+        depth={4}
+        chromaticAberration={10}
+        strength={0.5}
+        styleContainer={s.intro_glass_2}
+        radius={sizes.size1}
+      />
+      <GlassElement
         width={sizes.size2}
         height={sizes.size2}
         depth={1}
         chromaticAberration={10}
-        strength={0.5}
         styleContainer={s.intro_glass}
         radius={sizes.size2}
-      />
-      <GlassElement
-        width={sizes.size1}
-        height={sizes.size1}
-        depth={1}
-        chromaticAberration={5}
-        styleContainer={s.intro_glass_2}
-        radius={sizes.size1}
       />
       <GlassElement
         width={sizes.size3}

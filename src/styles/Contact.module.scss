@@ -39,4 +39,11 @@
     @media (max-width: 768px) {
         gap: 5px;
     }
+
+    &_canvas {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        margin-bottom: 15px;
+    }
 }

@@ -20,6 +20,8 @@
   align-items: stretch;
   padding: 20px 40px;
 
+  box-shadow: inset 0 0 30px 0px white;
+
   @media (max-width: 768px) {
     gap: 20px;
     padding: 10px 20px;
@@ -129,34 +131,34 @@
 
 .intro_glass {
   background: radial-gradient(circle at center, rgba(166, 223, 255, 0.6), rgba(255, 199, 224, 0.3));
-  transform: translateX(-200px) translateY(50px);
+  transform: translateX(-200px) translateY(200px);
   animation: floatCircle1 8s linear infinite;
 }
 
 .intro_glass_2 {
   background: radial-gradient(circle at center, rgba(200, 255, 241, 0.6), rgba(217, 200, 255, 0.3));
   transform: translateX(0px) translateY(50px);
-  animation: floatCircle2 20s linear infinite;
+  animation: floatCircle2 30s ease-in-out infinite;
 }
 
 .intro_glass_3 {
   background: radial-gradient(circle at center, rgba(255, 216, 194, 0.6), rgba(255, 199, 224, 0.3));
   transform: translateX(200px) translateY(50px); 
-  animation: floatCircle3 12s linear infinite;
+  animation: floatCircle3 12s ease-out infinite;
 }
 
 @keyframes floatCircle1 {
   0%   { transform: translateX(-150px) translateY(0); }
-  25%  { transform: translateX(-120px) translateY(-40px); }
-  50%  { transform: translateX(-150px) translateY(-80px); }
-  75%  { transform: translateX(-180px) translateY(-40px); }
+  25%  { transform: translateX(-120px) translateY(-20px); }
+  50%  { transform: translateX(-150px) translateY(-40px); }
+  75%  { transform: translateX(-180px) translateY(-20px); }
   100% { transform: translateX(-150px) translateY(0); }
 }
 
 @keyframes floatCircle2 {
   0%   { transform: translateX(0px) translateY(0); }
   25%  { transform: translateX(30px) translateY(-50px); }
-  50%  { transform: translateX(0px) translateY(-100px); }
+  50%  { transform: translateX(0px) translateY(-70px); }
   75%  { transform: translateX(-30px) translateY(-50px); }
   100% { transform: translateX(0px) translateY(0); }
 }
@@ -177,7 +179,7 @@
 
   .intro_glass_2 {
     transform: translateY(0px);
-    animation: floatCircle2Vertical 20s linear infinite;
+    animation: floatCircle2Vertical 30s linear infinite;
   }
 
   .intro_glass_3 {
@@ -196,7 +198,7 @@
   @keyframes floatCircle2Vertical {
     0%   { transform: translateY(0px) translateX(0); }
     25%  { transform: translateY(30px) translateX(50px); }
-    50%  { transform: translateY(0px) translateX(100px); }
+    50%  { transform: translateY(0px) translateX(70px); }
     75%  { transform: translateY(-30px) translateX(50px); }
     100% { transform: translateY(0px) translateX(0); }
   }

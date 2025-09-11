@@ -42,7 +42,8 @@
     "Message sent": "Message sent",
     "Failed to send message": "Failed to send message",
     "Required": "Required field",
-    "Invalid email": "Invalid email"
+    "Invalid email": "Invalid email",
+    "Clear": "Clear"
   },
   "project": {
     "Back": "Back",

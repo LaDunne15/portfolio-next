@@ -76,14 +76,28 @@ export default function Contact() {
               <TextInput control={control} name="name" label={t('Name')} />
               <TextInput control={control} name="email" label={t('Email')} />
               <TextInput control={control} name="message" label={t('Message')} multiline emoji />
-              <div>
+              <div className={s.form_canvas}>
                 <label>🌿 {t('Leave a trace')}</label>
                 <ReactSketchCanvas
                   ref={canvasRef}
-                  style={{ overflow: 'hidden', aspectRatio: 2 / 1, cursor: 'crosshair' }}
+                  style={{
+                    overflow: 'hidden',
+                    aspectRatio: 2 / 1,
+                    cursor: 'crosshair',
+                    border: '1px solid black',
+                    borderRadius: '10px',
+                  }}
                   strokeWidth={4}
                   strokeColor="black"
                 />
+                <button
+                  type="button"
+                  className="button"
+                  onClick={() => canvasRef.current?.clearCanvas()}
+                  style={{ marginTop: '8px' }}
+                >
+                  {t('Clear')}
+                </button>
               </div>
               <button className="button" type="submit">
                 {t('Send')}
